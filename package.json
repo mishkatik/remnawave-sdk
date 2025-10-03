@@ -1,6 +1,6 @@
 {
   "name": "@mishkat/remnawave-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SDK for Remnawave API",
   "type": "module",
   "main": "./dist/index.js",
