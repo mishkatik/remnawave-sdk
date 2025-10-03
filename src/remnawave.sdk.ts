@@ -1,5 +1,5 @@
 import { HttpClient } from './clients';
-import { ConfigCommand } from './commands';
+import { type Config, loadConfig } from './config';
 import {
   ApiTokensController,
   AuthController,
@@ -38,8 +38,8 @@ export class RemnawaveSDK {
   public readonly system: SystemController;
   public readonly users: UserController;
 
-  constructor(config: ConfigCommand.Input) {
-    const validatedConfig = ConfigCommand.Schema.parse(config);
+  constructor(config: Config) {
+    const validatedConfig = loadConfig(config);
 
     this.client = new HttpClient(validatedConfig);
     this.apiTokens = new ApiTokensController(this.client);

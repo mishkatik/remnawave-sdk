@@ -3,22 +3,26 @@ import axios, {
   type AxiosRequestConfig,
   isAxiosError,
 } from 'axios';
-import type { ConfigCommand } from '../commands/config.command.ts';
+import type { Config } from '../config/config.js';
 import type { ApiResponse } from '../interfaces/api-response.interface.ts';
 
 export class HttpClient {
   public readonly axios: AxiosInstance;
 
-  constructor(config: ConfigCommand.Config) {
+  constructor(config: Config) {
     this.axios = axios.create({
-      baseURL: config.baseUrl,
+      baseURL: config.panelUrl,
       headers: {
         Authorization: `Bearer ${config.apiKey}`,
-        'x-forwarded-for': 'remnawave-sdk',
+        'x-forwarded-for': '127.0.0.1',
         'x-forwarded-proto': 'https',
       },
       timeout: 10_000,
     });
+
+    if (config.caddyAuthToken) {
+      this.axios.defaults.headers.common['X-Api-Key'] = config.caddyAuthToken;
+    }
   }
 
   async callApi<T>(config: AxiosRequestConfig): Promise<T> {

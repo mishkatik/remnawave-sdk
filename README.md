@@ -12,7 +12,7 @@ bun install @mishkat/remnawave-sdk
 import { RemnawaveSDK } from "@mishkat/remnawave-sdk";
 
 const client = new RemnawaveSDK({
-  baseUrl: 'https://remna.st',
+  panelUrl: 'https://remna.st',
   apiKey: "your-api-key",
 });
 ```
