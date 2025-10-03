@@ -1,0 +1,24 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Config files
+tsconfig.json
+biome.json
+
+# Development files
+node_modules/
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# Other
+*.log
+*.lock
+bun.lock
+remnawave-api-v2116.json
+
