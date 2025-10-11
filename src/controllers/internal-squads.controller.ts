@@ -38,13 +38,13 @@ export class InternalSquadsController {
   }
 
   public async delete(
-    data: DeleteInternalSquadCommand.Request,
+    uuid: string,
   ): Promise<DeleteInternalSquadCommand.Response['response']> {
     return this.httpClient.callApi<
       DeleteInternalSquadCommand.Response['response']
     >({
       method: DeleteInternalSquadCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteInternalSquadCommand.url(data.uuid),
+      url: DeleteInternalSquadCommand.url(uuid),
     });
   }
 
@@ -60,50 +60,48 @@ export class InternalSquadsController {
   }
 
   public async getByUuid(
-    data: GetInternalSquadByUuidCommand.Request,
+    uuid: string,
   ): Promise<GetInternalSquadByUuidCommand.Response['response']> {
     return this.httpClient.callApi<
       GetInternalSquadByUuidCommand.Response['response']
     >({
       method: GetInternalSquadByUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetInternalSquadByUuidCommand.url(data.uuid),
+      url: GetInternalSquadByUuidCommand.url(uuid),
     });
   }
 
   public async getAccessibleNodes(
-    data: GetInternalSquadAccessibleNodesCommand.Request,
+    uuid: string,
   ): Promise<GetInternalSquadAccessibleNodesCommand.Response['response']> {
     return this.httpClient.callApi<
       GetInternalSquadAccessibleNodesCommand.Response['response']
     >({
       method:
         GetInternalSquadAccessibleNodesCommand.endpointDetails.REQUEST_METHOD,
-      url: GetInternalSquadAccessibleNodesCommand.url(data.uuid),
+      url: GetInternalSquadAccessibleNodesCommand.url(uuid),
     });
   }
 
   public async addUsers(
-    data: AddUsersToInternalSquadCommand.Request,
+    uuid: string,
   ): Promise<AddUsersToInternalSquadCommand.Response['response']> {
     return this.httpClient.callApi<
       AddUsersToInternalSquadCommand.Response['response']
     >({
       method: AddUsersToInternalSquadCommand.endpointDetails.REQUEST_METHOD,
-      url: AddUsersToInternalSquadCommand.url(data.uuid),
-      data,
+      url: AddUsersToInternalSquadCommand.url(uuid),
     });
   }
 
   public async deleteUsers(
-    data: DeleteUsersFromInternalSquadCommand.Request,
+    uuid: string,
   ): Promise<DeleteUsersFromInternalSquadCommand.Response['response']> {
     return this.httpClient.callApi<
       DeleteUsersFromInternalSquadCommand.Response['response']
     >({
       method:
         DeleteUsersFromInternalSquadCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteUsersFromInternalSquadCommand.url(data.uuid),
-      data,
+      url: DeleteUsersFromInternalSquadCommand.url(uuid),
     });
   }
 }

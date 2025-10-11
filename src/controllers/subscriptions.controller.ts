@@ -22,29 +22,29 @@ export class SubscriptionsController {
   }
 
   public async getByUuid(
-    data: GetSubscriptionByUuidCommand.Request,
+    uuid: string,
   ): Promise<GetSubscriptionByUuidCommand.Response['response']> {
     return this.httpClient.callApi<
       GetSubscriptionByUuidCommand.Response['response']
     >({
       method: GetSubscriptionByUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionByUuidCommand.url(data.uuid),
+      url: GetSubscriptionByUuidCommand.url(uuid),
     });
   }
 
   public async getByUsername(
-    data: GetSubscriptionByUsernameCommand.Request,
+    username: string,
   ): Promise<GetSubscriptionByUsernameCommand.Response['response']> {
     return this.httpClient.callApi<
       GetSubscriptionByUsernameCommand.Response['response']
     >({
       method: GetSubscriptionByUsernameCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionByUsernameCommand.url(data.username),
+      url: GetSubscriptionByUsernameCommand.url(username),
     });
   }
 
   public async getByShortUuidProtected(
-    data: GetSubscriptionByShortUuidProtectedCommand.Request,
+    shortUuid: string,
   ): Promise<GetSubscriptionByShortUuidProtectedCommand.Response['response']> {
     return this.httpClient.callApi<
       GetSubscriptionByShortUuidProtectedCommand.Response['response']
@@ -52,7 +52,7 @@ export class SubscriptionsController {
       method:
         GetSubscriptionByShortUuidProtectedCommand.endpointDetails
           .REQUEST_METHOD,
-      url: GetSubscriptionByShortUuidProtectedCommand.url(data.shortUuid),
+      url: GetSubscriptionByShortUuidProtectedCommand.url(shortUuid),
     });
   }
 }

@@ -62,20 +62,20 @@ export class UserController {
   }
 
   public async delete(
-    data: DeleteUserCommand.Request,
+    uuid: string,
   ): Promise<DeleteUserCommand.Response['response']> {
     return this.httpClient.callApi<DeleteUserCommand.Response['response']>({
       method: DeleteUserCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteUserCommand.url(data.uuid),
+      url: DeleteUserCommand.url(uuid),
     });
   }
 
   public async getByUuid(
-    data: GetUserByUuidCommand.Request,
+    uuid: string,
   ): Promise<GetUserByUuidCommand.Response['response']> {
     return this.httpClient.callApi<GetUserByUuidCommand.Response['response']>({
       method: GetUserByUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetUserByUuidCommand.url(data.uuid),
+      url: GetUserByUuidCommand.url(uuid),
     });
   }
 
@@ -89,76 +89,76 @@ export class UserController {
   }
 
   public async getUserAccessibleNodes(
-    data: GetUserAccessibleNodesCommand.Request,
+    uuid: string,
   ): Promise<GetUserAccessibleNodesCommand.Response['response']> {
     return this.httpClient.callApi<
       GetUserAccessibleNodesCommand.Response['response']
     >({
       method: GetUserAccessibleNodesCommand.endpointDetails.REQUEST_METHOD,
-      url: GetUserAccessibleNodesCommand.url(data.uuid),
+      url: GetUserAccessibleNodesCommand.url(uuid),
     });
   }
 
   public async getSubscriptionRequestHistory(
-    data: GetUserSubscriptionRequestHistoryCommand.Request,
+    uuid: string,
   ): Promise<GetUserSubscriptionRequestHistoryCommand.Response['response']> {
     return this.httpClient.callApi<
       GetUserSubscriptionRequestHistoryCommand.Response['response']
     >({
       method:
         GetUserSubscriptionRequestHistoryCommand.endpointDetails.REQUEST_METHOD,
-      url: GetUserSubscriptionRequestHistoryCommand.url(data.uuid),
+      url: GetUserSubscriptionRequestHistoryCommand.url(uuid),
     });
   }
 
   public async getByShortUuid(
-    data: GetUserByShortUuidCommand.Request,
+    shortUuid: string,
   ): Promise<GetUserByShortUuidCommand.Response['response']> {
     return this.httpClient.callApi<
       GetUserByShortUuidCommand.Response['response']
     >({
       method: GetUserByShortUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetUserByShortUuidCommand.url(data.shortUuid),
+      url: GetUserByShortUuidCommand.url(shortUuid),
     });
   }
 
   public async getByUsername(
-    data: GetUserByUsernameCommand.Request,
+    username: string,
   ): Promise<GetUserByUsernameCommand.Response['response']> {
     return this.httpClient.callApi<
       GetUserByUsernameCommand.Response['response']
     >({
       method: GetUserByUsernameCommand.endpointDetails.REQUEST_METHOD,
-      url: GetUserByUsernameCommand.url(data.username),
+      url: GetUserByUsernameCommand.url(username),
     });
   }
 
   public async getByTelegramId(
-    data: GetUserByTelegramIdCommand.Request,
+    telegramId: string,
   ): Promise<GetUserByTelegramIdCommand.Response['response']> {
     return this.httpClient.callApi<
       GetUserByTelegramIdCommand.Response['response']
     >({
       method: GetUserByTelegramIdCommand.endpointDetails.REQUEST_METHOD,
-      url: GetUserByTelegramIdCommand.url(data.telegramId),
+      url: GetUserByTelegramIdCommand.url(telegramId),
     });
   }
 
   public async getByEmail(
-    data: GetUserByEmailCommand.Request,
+    email: string,
   ): Promise<GetUserByEmailCommand.Response['response']> {
     return this.httpClient.callApi<GetUserByEmailCommand.Response['response']>({
       method: GetUserByEmailCommand.endpointDetails.REQUEST_METHOD,
-      url: GetUserByEmailCommand.url(data.email),
+      url: GetUserByEmailCommand.url(email),
     });
   }
 
   public async getByTag(
-    data: GetUserByTagCommand.Request,
+    tag: string,
   ): Promise<GetUserByTagCommand.Response['response']> {
     return this.httpClient.callApi<GetUserByTagCommand.Response['response']>({
       method: GetUserByTagCommand.endpointDetails.REQUEST_METHOD,
-      url: GetUserByTagCommand.url(data.tag),
+      url: GetUserByTagCommand.url(tag),
     });
   }
 
@@ -176,43 +176,43 @@ export class UserController {
   }
 
   public async disable(
-    data: DisableUserCommand.Request,
+    uuid: string,
   ): Promise<DisableUserCommand.Response['response']> {
     return this.httpClient.callApi<DisableUserCommand.Response['response']>({
       method: DisableUserCommand.endpointDetails.REQUEST_METHOD,
-      url: DisableUserCommand.url(data.uuid),
+      url: DisableUserCommand.url(uuid),
     });
   }
 
   public async enable(
-    data: EnableUserCommand.Request,
+    uuid: string,
   ): Promise<EnableUserCommand.Response['response']> {
     return this.httpClient.callApi<EnableUserCommand.Response['response']>({
       method: EnableUserCommand.endpointDetails.REQUEST_METHOD,
-      url: EnableUserCommand.url(data.uuid),
+      url: EnableUserCommand.url(uuid),
     });
   }
 
   public async resetTraffic(
-    data: ResetUserTrafficCommand.Request,
+    uuid: string,
   ): Promise<ResetUserTrafficCommand.Response['response']> {
     return this.httpClient.callApi<
       ResetUserTrafficCommand.Response['response']
     >({
       method: ResetUserTrafficCommand.endpointDetails.REQUEST_METHOD,
-      url: ResetUserTrafficCommand.url(data.uuid),
+      url: ResetUserTrafficCommand.url(uuid),
     });
   }
 
   public async getUserUsageByRange(
-    data: GetUserUsageByRangeCommand.Request,
+    uuid: string,
     query: GetUserUsageByRangeCommand.RequestQuery,
   ): Promise<GetUserUsageByRangeCommand.Response['response']> {
     return this.httpClient.callApi<
       GetUserUsageByRangeCommand.Response['response']
     >({
       method: GetUserUsageByRangeCommand.endpointDetails.REQUEST_METHOD,
-      url: GetUserUsageByRangeCommand.url(data.uuid),
+      url: GetUserUsageByRangeCommand.url(uuid),
       params: query,
     });
   }

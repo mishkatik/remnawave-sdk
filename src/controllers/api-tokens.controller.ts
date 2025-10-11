@@ -27,7 +27,9 @@ export class ApiTokensController {
     });
   }
 
-  public async find(): Promise<FindAllApiTokensCommand.Response['response']> {
+  public async findAll(): Promise<
+    FindAllApiTokensCommand.Response['response']
+  > {
     return this.httpClient.callApi<
       FindAllApiTokensCommand.Response['response']
     >({

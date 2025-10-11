@@ -5,14 +5,14 @@ export class SubscriptionController {
   constructor(private readonly httpClient: HttpClient) {}
 
   public async getInfoByShortUuid(
-    data: GetSubscriptionInfoByShortUuidCommand.Request,
+    shortUuid: string,
   ): Promise<GetSubscriptionInfoByShortUuidCommand.Response['response']> {
     return this.httpClient.callApi<
       GetSubscriptionInfoByShortUuidCommand.Response['response']
     >({
       method:
         GetSubscriptionInfoByShortUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionInfoByShortUuidCommand.url(data.shortUuid),
+      url: GetSubscriptionInfoByShortUuidCommand.url(shortUuid),
     });
   }
 }

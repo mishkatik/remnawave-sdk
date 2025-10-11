@@ -39,11 +39,11 @@ export class NodesController {
   }
 
   public async delete(
-    data: DeleteNodeCommand.Request,
+    uuid: string,
   ): Promise<DeleteNodeCommand.Response['response']> {
     return this.httpClient.callApi<DeleteNodeCommand.Response['response']>({
       method: DeleteNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteNodeCommand.url(data.uuid),
+      url: DeleteNodeCommand.url(uuid),
     });
   }
 
@@ -55,38 +55,38 @@ export class NodesController {
   }
 
   public async getOne(
-    data: GetOneNodeCommand.Request,
+    uuid: string,
   ): Promise<GetOneNodeCommand.Response['response']> {
     return this.httpClient.callApi<GetOneNodeCommand.Response['response']>({
       method: GetOneNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: GetOneNodeCommand.url(data.uuid),
+      url: GetOneNodeCommand.url(uuid),
     });
   }
 
   public async enable(
-    data: EnableNodeCommand.Request,
+    uuid: string,
   ): Promise<EnableNodeCommand.Response['response']> {
     return this.httpClient.callApi<EnableNodeCommand.Response['response']>({
       method: EnableNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: EnableNodeCommand.url(data.uuid),
+      url: EnableNodeCommand.url(uuid),
     });
   }
 
   public async disable(
-    data: DisableNodeCommand.Request,
+    uuid: string,
   ): Promise<DisableNodeCommand.Response['response']> {
     return this.httpClient.callApi<DisableNodeCommand.Response['response']>({
       method: DisableNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: DisableNodeCommand.url(data.uuid),
+      url: DisableNodeCommand.url(uuid),
     });
   }
 
   public async restart(
-    data: RestartNodeCommand.Request,
+    uuid: string,
   ): Promise<RestartNodeCommand.Response['response']> {
     return this.httpClient.callApi<RestartNodeCommand.Response['response']>({
       method: RestartNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: RestartNodeCommand.url(data.uuid),
+      url: RestartNodeCommand.url(uuid),
     });
   }
 
@@ -135,14 +135,14 @@ export class NodesController {
   }
 
   public async getNodeUserUsageByRange(
-    data: GetNodeUserUsageByRangeCommand.Request,
+    uuid: string,
     query: GetNodeUserUsageByRangeCommand.RequestQuery,
   ): Promise<GetNodeUserUsageByRangeCommand.Response['response']> {
     return this.httpClient.callApi<
       GetNodeUserUsageByRangeCommand.Response['response']
     >({
       method: GetNodeUserUsageByRangeCommand.endpointDetails.REQUEST_METHOD,
-      url: GetNodeUserUsageByRangeCommand.url(data.uuid),
+      url: GetNodeUserUsageByRangeCommand.url(uuid),
       params: query,
     });
   }

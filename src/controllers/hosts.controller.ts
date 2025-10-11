@@ -38,11 +38,11 @@ export class HostsController {
   }
 
   public async delete(
-    data: DeleteHostCommand.Request,
+    uuid: string,
   ): Promise<DeleteHostCommand.Response['response']> {
     return this.httpClient.callApi<DeleteHostCommand.Response['response']>({
       method: DeleteHostCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteHostCommand.url(data.uuid),
+      url: DeleteHostCommand.url(uuid),
     });
   }
 
@@ -54,11 +54,11 @@ export class HostsController {
   }
 
   public async getByUuid(
-    data: GetOneHostCommand.Request,
+    uuid: string,
   ): Promise<GetOneHostCommand.Response['response']> {
     return this.httpClient.callApi<GetOneHostCommand.Response['response']>({
       method: GetOneHostCommand.endpointDetails.REQUEST_METHOD,
-      url: GetOneHostCommand.url(data.uuid),
+      url: GetOneHostCommand.url(uuid),
     });
   }
 
