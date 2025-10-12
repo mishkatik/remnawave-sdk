@@ -1,7 +1,6 @@
 import { HttpClient } from './clients';
 import { type Config, loadConfig } from './config';
 import {
-  ApiTokensController,
   AuthController,
   ConfigProfilesController,
   HostsController,
@@ -21,7 +20,6 @@ import {
 
 export class RemnawaveSDK {
   private readonly client: HttpClient;
-  public readonly apiTokens: ApiTokensController;
   public readonly auth: AuthController;
   public readonly configProfiles: ConfigProfilesController;
   public readonly hosts: HostsController;
@@ -42,7 +40,6 @@ export class RemnawaveSDK {
     const validatedConfig = loadConfig(config);
 
     this.client = new HttpClient(validatedConfig);
-    this.apiTokens = new ApiTokensController(this.client);
     this.auth = new AuthController(this.client);
     this.configProfiles = new ConfigProfilesController(this.client);
     this.hosts = new HostsController(this.client);

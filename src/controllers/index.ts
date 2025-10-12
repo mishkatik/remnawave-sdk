@@ -1,4 +1,3 @@
-export * from './api-tokens.controller';
 export * from './auth.controller';
 export * from './config-profiles.controller';
 export * from './hosts.controller';
