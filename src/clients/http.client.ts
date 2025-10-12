@@ -14,14 +14,28 @@ export class HttpClient {
       baseURL: config.panelUrl,
       headers: {
         Authorization: `Bearer ${config.apiKey}`,
-        'x-forwarded-for': '127.0.0.1',
-        'x-forwarded-proto': 'https',
+        'User-Agent': 'Remnawave SDK Client',
       },
       timeout: 10_000,
     });
 
     if (config.caddyAuthToken) {
       this.axios.defaults.headers.common['X-Api-Key'] = config.caddyAuthToken;
+    }
+
+    if (
+      config.cloudflareZeroTrustClientSecret &&
+      config.cloudflareZeroTrustClientId
+    ) {
+      this.axios.defaults.headers.common['CF-Access-Client-Id'] =
+        config.cloudflareZeroTrustClientId;
+      this.axios.defaults.headers.common['CF-Access-Client-Secret'] =
+        config.cloudflareZeroTrustClientSecret;
+    }
+
+    if (config.panelUrl.startsWith('http://')) {
+      this.axios.defaults.headers.common['x-forwarded-for'] = '127.0.0.1';
+      this.axios.defaults.headers.common['x-forwarded-proto'] = 'https';
     }
   }
 

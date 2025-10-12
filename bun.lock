@@ -4,7 +4,7 @@
     "": {
       "name": "remnawave-sdk",
       "dependencies": {
-        "@remnawave/backend-contract": "2.1.68",
+        "@remnawave/backend-contract": "2.1.70",
         "axios": "^1.12.2",
         "zod": "^4.1.12",
       },
@@ -36,7 +36,7 @@
 
     "@biomejs/cli-win32-x64": ["@biomejs/cli-win32-x64@2.2.5", "", { "os": "win32", "cpu": "x64" }, "sha512-F/jhuXCssPFAuciMhHKk00xnCAxJRS/pUzVfXYmOMUp//XW7mO6QeCjsjvnm8L4AO/dG2VOB0O+fJPiJ2uXtIw=="],
 
-    "@remnawave/backend-contract": ["@remnawave/backend-contract@2.1.68", "", { "dependencies": { "zod": "^3.25.76" } }, "sha512-HbrOCGqI5pZSYk9jg0WzVcubz92/lRy+hZCdJp4yNdGXc7vm/9NZoqsGVI6+BTff19y3meyn/PJN5qBd6j4OzA=="],
+    "@remnawave/backend-contract": ["@remnawave/backend-contract@2.1.70", "", { "dependencies": { "zod": "^3.25.76" } }, "sha512-qOB05l3ql9S14IQ52SUvv7119rSMHNt8fBHr2NSkStUboyWM6n1VybcALbK1QBh0vNSqPyEgDIFQQzYvvL85kw=="],
 
     "@types/bun": ["@types/bun@1.3.0", "", { "dependencies": { "bun-types": "1.3.0" } }, "sha512-+lAGCYjXjip2qY375xX/scJeVRmZ5cY0wyHYyCYxNcdEXrQ4AOe3gACgd4iQ8ksOslJtW4VNxBJ8llUwc3a6AA=="],
 
