@@ -4,6 +4,8 @@ export const ConfigSchema = z.object({
   panelUrl: z.url('Panel URL Must Be A Valid URL'),
   apiKey: z.jwt('API Key Must Be A Valid JWT'),
   caddyAuthToken: z.string().optional(),
+  cloudflareZeroTrustClientSecret: z.string().optional(),
+  cloudflareZeroTrustClientId: z.string().optional(),
 });
 
 export type Config = z.infer<typeof ConfigSchema>;

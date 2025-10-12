@@ -35,7 +35,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@remnawave/backend-contract": "2.1.68",
+    "@remnawave/backend-contract": "2.1.70",
     "axios": "^1.12.2",
     "zod": "^4.1.12"
   }
