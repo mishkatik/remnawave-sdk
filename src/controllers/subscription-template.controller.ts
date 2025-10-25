@@ -8,13 +8,13 @@ export class SubscriptionTemplateController {
   constructor(private readonly httpClient: HttpClient) {}
 
   public async getTemplate(
-    data: GetSubscriptionTemplateCommand.Request,
+    uuid: string,
   ): Promise<GetSubscriptionTemplateCommand.Response['response']> {
     return this.httpClient.callApi<
       GetSubscriptionTemplateCommand.Response['response']
     >({
       method: GetSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionTemplateCommand.url(data.templateType),
+      url: GetSubscriptionTemplateCommand.url(uuid),
     });
   }
 

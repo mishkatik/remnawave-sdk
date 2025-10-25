@@ -1,6 +1,6 @@
 {
   "name": "@mishkat/remnawave-sdk",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "SDK for Remnawave API",
   "type": "module",
   "main": "./dist/index.js",
@@ -28,14 +28,14 @@
     "api"
   ],
   "devDependencies": {
-    "@biomejs/biome": "2.2.5",
+    "@biomejs/biome": "2.3.0",
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@remnawave/backend-contract": "2.1.70",
+    "@remnawave/backend-contract": "2.2.24",
     "axios": "^1.12.2",
     "zod": "^4.1.12"
   }

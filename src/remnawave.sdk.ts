@@ -3,12 +3,14 @@ import { type Config, loadConfig } from './config';
 import {
   AuthController,
   ConfigProfilesController,
+  ExternalSquadsController,
   HostsController,
   HwidController,
   InfraBillingController,
   InternalSquadsController,
   KeygenController,
   NodesController,
+  SnippetsController,
   SubscriptionController,
   SubscriptionRequestHistoryController,
   SubscriptionSettingsController,
@@ -26,8 +28,10 @@ export class RemnawaveSDK {
   public readonly hwid: HwidController;
   public readonly infraBilling: InfraBillingController;
   public readonly internalSquads: InternalSquadsController;
+  public readonly externalSquads: ExternalSquadsController;
   public readonly keygen: KeygenController;
   public readonly nodes: NodesController;
+  public readonly snippets: SnippetsController;
   public readonly subscription: SubscriptionController;
   public readonly subscriptionRequestHistory: SubscriptionRequestHistoryController;
   public readonly subscriptions: SubscriptionsController;
@@ -46,8 +50,10 @@ export class RemnawaveSDK {
     this.hwid = new HwidController(this.client);
     this.infraBilling = new InfraBillingController(this.client);
     this.internalSquads = new InternalSquadsController(this.client);
+    this.externalSquads = new ExternalSquadsController(this.client);
     this.keygen = new KeygenController(this.client);
     this.nodes = new NodesController(this.client);
+    this.snippets = new SnippetsController(this.client);
     this.subscription = new SubscriptionController(this.client);
     this.subscriptionRequestHistory = new SubscriptionRequestHistoryController(
       this.client,
