@@ -1,6 +1,12 @@
 {
   "name": "@mishkat/remnawave-sdk",
   "version": "1.2.1",
+  "author": "Mishkat <github.com/mishkatik>",
+  "homepage": "https://github.com/mishkatik/remnawave-sdk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mishkatik/remnawave-sdk"
+  },
   "description": "SDK for Remnawave API",
   "type": "module",
   "main": "./dist/index.js",
