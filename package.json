@@ -1,6 +1,6 @@
 {
   "name": "@mishkat/remnawave-sdk",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "SDK for Remnawave API",
   "type": "module",
   "main": "./dist/index.js",
@@ -35,7 +35,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@remnawave/backend-contract": "2.2.24",
+    "@remnawave/backend-contract": "2.2.26",
     "axios": "^1.12.2",
     "zod": "^4.1.12"
   }
