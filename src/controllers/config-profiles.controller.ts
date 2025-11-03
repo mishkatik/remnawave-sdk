@@ -2,6 +2,7 @@ import {
   CreateConfigProfileCommand,
   DeleteConfigProfileCommand,
   GetAllInboundsCommand,
+  GetComputedConfigProfileByUuidCommand,
   GetConfigProfileByUuidCommand,
   GetConfigProfilesCommand,
   GetInboundsByProfileUuidCommand,
@@ -21,6 +22,18 @@ export class ConfigProfilesController {
       method: CreateConfigProfileCommand.endpointDetails.REQUEST_METHOD,
       url: CreateConfigProfileCommand.url,
       data,
+    });
+  }
+
+  public async getComputedByProfileUuid(
+    uuid: string,
+  ): Promise<GetComputedConfigProfileByUuidCommand.Response['response']> {
+    return this.httpClient.callApi<
+      GetComputedConfigProfileByUuidCommand.Response['response']
+    >({
+      method:
+        GetComputedConfigProfileByUuidCommand.endpointDetails.REQUEST_METHOD,
+      url: GetComputedConfigProfileByUuidCommand.url(uuid),
     });
   }
 

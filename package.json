@@ -1,6 +1,6 @@
 {
   "name": "@mishkat/remnawave-sdk",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Mishkat <github.com/mishkatik>",
   "homepage": "https://github.com/mishkatik/remnawave-sdk",
   "repository": {
@@ -34,15 +34,15 @@
     "api"
   ],
   "devDependencies": {
-    "@biomejs/biome": "2.3.0",
+    "@biomejs/biome": "2.3.2",
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@remnawave/backend-contract": "2.2.26",
-    "axios": "^1.12.2",
+    "@remnawave/backend-contract": "2.2.32",
+    "axios": "^1.13.1",
     "zod": "^4.1.12"
   }
 }

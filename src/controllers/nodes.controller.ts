@@ -9,6 +9,7 @@ import {
   GetNodeUserUsageByRangeCommand,
   GetOneNodeCommand,
   ReorderNodeCommand,
+  ResetNodeTrafficCommand,
   RestartAllNodesCommand,
   RestartNodeCommand,
   UpdateNodeCommand,
@@ -144,6 +145,17 @@ export class NodesController {
       method: GetNodeUserUsageByRangeCommand.endpointDetails.REQUEST_METHOD,
       url: GetNodeUserUsageByRangeCommand.url(uuid),
       params: query,
+    });
+  }
+
+  public async resetTraffic(
+    uuid: string,
+  ): Promise<ResetNodeTrafficCommand.Response['response']> {
+    return this.httpClient.callApi<
+      ResetNodeTrafficCommand.Response['response']
+    >({
+      method: ResetNodeTrafficCommand.endpointDetails.REQUEST_METHOD,
+      url: ResetNodeTrafficCommand.url(uuid),
     });
   }
 }
