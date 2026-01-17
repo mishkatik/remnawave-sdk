@@ -5,6 +5,7 @@ import {
   DeleteUsersFromExternalSquadCommand,
   GetExternalSquadByUuidCommand,
   GetExternalSquadsCommand,
+  ReorderExternalSquadCommand,
   UpdateExternalSquadCommand,
 } from '@remnawave/backend-contract';
 import type { HttpClient } from '../clients';
@@ -89,6 +90,18 @@ export class ExternalSquadsController {
       method:
         DeleteUsersFromExternalSquadCommand.endpointDetails.REQUEST_METHOD,
       url: DeleteUsersFromExternalSquadCommand.url(uuid),
+    });
+  }
+
+  public async reorder(
+    data: ReorderExternalSquadCommand.Request,
+  ): Promise<ReorderExternalSquadCommand.Response['response']> {
+    return this.httpClient.callApi<
+      ReorderExternalSquadCommand.Response['response']
+    >({
+      method: ReorderExternalSquadCommand.endpointDetails.REQUEST_METHOD,
+      url: ReorderExternalSquadCommand.url,
+      data,
     });
   }
 }

@@ -6,6 +6,7 @@ import {
   GetInternalSquadAccessibleNodesCommand,
   GetInternalSquadByUuidCommand,
   GetInternalSquadsCommand,
+  ReorderInternalSquadCommand,
   UpdateInternalSquadCommand,
 } from '@remnawave/backend-contract';
 import type { HttpClient } from '../clients';
@@ -102,6 +103,18 @@ export class InternalSquadsController {
       method:
         DeleteUsersFromInternalSquadCommand.endpointDetails.REQUEST_METHOD,
       url: DeleteUsersFromInternalSquadCommand.url(uuid),
+    });
+  }
+
+  public async reorder(
+    data: ReorderInternalSquadCommand.Request,
+  ): Promise<ReorderInternalSquadCommand.Response['response']> {
+    return this.httpClient.callApi<
+      ReorderInternalSquadCommand.Response['response']
+    >({
+      method: ReorderInternalSquadCommand.endpointDetails.REQUEST_METHOD,
+      url: ReorderInternalSquadCommand.url,
+      data,
     });
   }
 }

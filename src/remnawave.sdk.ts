@@ -12,9 +12,10 @@ import {
   NodesController,
   SnippetsController,
   SubscriptionController,
+  SubscriptionPageConfigsController,
   SubscriptionRequestHistoryController,
-  SubscriptionSettingsController,
   SubscriptionsController,
+  SubscriptionSettingsController,
   SubscriptionTemplateController,
   SystemController,
   UserController,
@@ -37,6 +38,7 @@ export class RemnawaveSDK {
   public readonly subscriptions: SubscriptionsController;
   public readonly subscriptionSettings: SubscriptionSettingsController;
   public readonly subscriptionTemplate: SubscriptionTemplateController;
+  public readonly subscriptionPageConfigs: SubscriptionPageConfigsController;
   public readonly system: SystemController;
   public readonly users: UserController;
 
@@ -61,6 +63,9 @@ export class RemnawaveSDK {
     this.subscriptions = new SubscriptionsController(this.client);
     this.subscriptionSettings = new SubscriptionSettingsController(this.client);
     this.subscriptionTemplate = new SubscriptionTemplateController(this.client);
+    this.subscriptionPageConfigs = new SubscriptionPageConfigsController(
+      this.client,
+    );
     this.system = new SystemController(this.client);
     this.users = new UserController(this.client);
   }

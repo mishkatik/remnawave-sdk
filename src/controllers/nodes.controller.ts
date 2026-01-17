@@ -4,10 +4,11 @@ import {
   DisableNodeCommand,
   EnableNodeCommand,
   GetAllNodesCommand,
-  GetNodesRealtimeUsageCommand,
-  GetNodesUsageByRangeCommand,
-  GetNodeUserUsageByRangeCommand,
+  GetLegacyStatsNodeUserUsageCommand,
   GetOneNodeCommand,
+  GetStatsNodesRealtimeUsageCommand,
+  GetStatsNodesUsageCommand,
+  GetStatsNodeUsersUsageCommand,
   ReorderNodeCommand,
   ResetNodeTrafficCommand,
   RestartAllNodesCommand,
@@ -113,37 +114,50 @@ export class NodesController {
   }
 
   public async getRealtimeUsage(): Promise<
-    GetNodesRealtimeUsageCommand.Response['response']
+    GetStatsNodesRealtimeUsageCommand.Response['response']
   > {
     return this.httpClient.callApi<
-      GetNodesRealtimeUsageCommand.Response['response']
+      GetStatsNodesRealtimeUsageCommand.Response['response']
     >({
-      method: GetNodesRealtimeUsageCommand.endpointDetails.REQUEST_METHOD,
-      url: GetNodesRealtimeUsageCommand.url,
+      method: GetStatsNodesRealtimeUsageCommand.endpointDetails.REQUEST_METHOD,
+      url: GetStatsNodesRealtimeUsageCommand.url,
     });
   }
 
   public async getUsageByRange(
-    data: GetNodesUsageByRangeCommand.RequestQuery,
-  ): Promise<GetNodesUsageByRangeCommand.Response['response']> {
+    data: GetStatsNodesUsageCommand.RequestQuery,
+  ): Promise<GetStatsNodesUsageCommand.Response['response']> {
     return this.httpClient.callApi<
-      GetNodesUsageByRangeCommand.Response['response']
+      GetStatsNodesUsageCommand.Response['response']
     >({
-      method: GetNodesUsageByRangeCommand.endpointDetails.REQUEST_METHOD,
-      url: GetNodesUsageByRangeCommand.url,
+      method: GetStatsNodesUsageCommand.endpointDetails.REQUEST_METHOD,
+      url: GetStatsNodesUsageCommand.url,
       params: data,
     });
   }
 
   public async getNodeUserUsageByRange(
     uuid: string,
-    query: GetNodeUserUsageByRangeCommand.RequestQuery,
-  ): Promise<GetNodeUserUsageByRangeCommand.Response['response']> {
+    query: GetStatsNodeUsersUsageCommand.RequestQuery,
+  ): Promise<GetStatsNodeUsersUsageCommand.Response['response']> {
     return this.httpClient.callApi<
-      GetNodeUserUsageByRangeCommand.Response['response']
+      GetStatsNodeUsersUsageCommand.Response['response']
     >({
-      method: GetNodeUserUsageByRangeCommand.endpointDetails.REQUEST_METHOD,
-      url: GetNodeUserUsageByRangeCommand.url(uuid),
+      method: GetStatsNodeUsersUsageCommand.endpointDetails.REQUEST_METHOD,
+      url: GetStatsNodeUsersUsageCommand.url(uuid),
+      params: query,
+    });
+  }
+
+  public async getNodeUserUsageByRangeLegacy(
+    uuid: string,
+    query: GetLegacyStatsNodeUserUsageCommand.RequestQuery,
+  ): Promise<GetLegacyStatsNodeUserUsageCommand.Response['response']> {
+    return this.httpClient.callApi<
+      GetLegacyStatsNodeUserUsageCommand.Response['response']
+    >({
+      method: GetLegacyStatsNodeUserUsageCommand.endpointDetails.REQUEST_METHOD,
+      url: GetLegacyStatsNodeUserUsageCommand.url(uuid),
       params: query,
     });
   }

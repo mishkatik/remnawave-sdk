@@ -9,6 +9,7 @@ export * from './keygen.controller';
 export * from './nodes.controller';
 export * from './snippets.controller';
 export * from './subscription.controller';
+export * from './subscription-page-configs.controller';
 export * from './subscription-request-history.controller';
 export * from './subscription-settings.controller';
 export * from './subscription-template.controller';

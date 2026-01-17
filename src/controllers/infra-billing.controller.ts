@@ -43,14 +43,13 @@ export class InfraBillingController {
   }
 
   public async deleteProvider(
-    data: DeleteInfraProviderByUuidCommand.Request,
+    uuid: string,
   ): Promise<DeleteInfraProviderByUuidCommand.Response['response']> {
     return this.httpClient.callApi<
       DeleteInfraProviderByUuidCommand.Response['response']
     >({
       method: DeleteInfraProviderByUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteInfraProviderByUuidCommand.url,
-      data,
+      url: DeleteInfraProviderByUuidCommand.url(uuid),
     });
   }
 
@@ -66,14 +65,13 @@ export class InfraBillingController {
   }
 
   public async getProviderByUuid(
-    data: GetInfraProviderByUuidCommand.Request,
+    uuid: string,
   ): Promise<GetInfraProviderByUuidCommand.Response['response']> {
     return this.httpClient.callApi<
       GetInfraProviderByUuidCommand.Response['response']
     >({
       method: GetInfraProviderByUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetInfraProviderByUuidCommand.url,
-      params: data,
+      url: GetInfraProviderByUuidCommand.url(uuid),
     });
   }
 
@@ -103,15 +101,14 @@ export class InfraBillingController {
   }
 
   public async deleteBillingNode(
-    data: DeleteInfraBillingNodeByUuidCommand.Request,
+    uuid: string,
   ): Promise<DeleteInfraBillingNodeByUuidCommand.Response['response']> {
     return this.httpClient.callApi<
       DeleteInfraBillingNodeByUuidCommand.Response['response']
     >({
       method:
         DeleteInfraBillingNodeByUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteInfraBillingNodeByUuidCommand.url,
-      data,
+      url: DeleteInfraBillingNodeByUuidCommand.url(uuid),
     });
   }
 
@@ -141,15 +138,14 @@ export class InfraBillingController {
   }
 
   public async deleteBillRecord(
-    data: DeleteInfraBillingHistoryRecordCommand.Request,
+    uuid: string,
   ): Promise<DeleteInfraBillingHistoryRecordCommand.Response['response']> {
     return this.httpClient.callApi<
       DeleteInfraBillingHistoryRecordCommand.Response['response']
     >({
       method:
         DeleteInfraBillingHistoryRecordCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteInfraBillingHistoryRecordCommand.url,
-      data,
+      url: DeleteInfraBillingHistoryRecordCommand.url(uuid),
     });
   }
 

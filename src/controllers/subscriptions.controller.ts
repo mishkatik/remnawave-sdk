@@ -1,5 +1,7 @@
 import {
   GetAllSubscriptionsCommand,
+  GetRawSubscriptionByShortUuidCommand,
+  GetSubpageConfigByShortUuidCommand,
   GetSubscriptionByShortUuidProtectedCommand,
   GetSubscriptionByUsernameCommand,
   GetSubscriptionByUuidCommand,
@@ -53,6 +55,29 @@ export class SubscriptionsController {
         GetSubscriptionByShortUuidProtectedCommand.endpointDetails
           .REQUEST_METHOD,
       url: GetSubscriptionByShortUuidProtectedCommand.url(shortUuid),
+    });
+  }
+
+  public async getRawByShortUuid(
+    shortUuid: string,
+  ): Promise<GetRawSubscriptionByShortUuidCommand.Response['response']> {
+    return this.httpClient.callApi<
+      GetRawSubscriptionByShortUuidCommand.Response['response']
+    >({
+      method:
+        GetRawSubscriptionByShortUuidCommand.endpointDetails.REQUEST_METHOD,
+      url: GetRawSubscriptionByShortUuidCommand.url(shortUuid),
+    });
+  }
+
+  public async getSubPageConfigByShortUuid(
+    shortUuid: string,
+  ): Promise<GetSubpageConfigByShortUuidCommand.Response['response']> {
+    return this.httpClient.callApi<
+      GetSubpageConfigByShortUuidCommand.Response['response']
+    >({
+      method: GetSubpageConfigByShortUuidCommand.endpointDetails.REQUEST_METHOD,
+      url: GetSubpageConfigByShortUuidCommand.url(shortUuid),
     });
   }
 }

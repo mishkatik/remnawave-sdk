@@ -2,15 +2,26 @@ import {
   EncryptHappCryptoLinkCommand,
   GenerateX25519Command,
   GetBandwidthStatsCommand,
+  GetMetadataCommand,
   GetNodesMetricsCommand,
   GetNodesStatisticsCommand,
   GetRemnawaveHealthCommand,
   GetStatsCommand,
+  TestSrrMatcherCommand,
 } from '@remnawave/backend-contract';
 import type { HttpClient } from '../clients';
 
 export class SystemController {
   constructor(private readonly httpClient: HttpClient) {}
+
+  public async getRemnawaveInformation(): Promise<
+    GetMetadataCommand.Response['response']
+  > {
+    return this.httpClient.callApi<GetMetadataCommand.Response['response']>({
+      method: GetMetadataCommand.endpointDetails.REQUEST_METHOD,
+      url: GetMetadataCommand.url,
+    });
+  }
 
   public async getStats(): Promise<GetStatsCommand.Response['response']> {
     return this.httpClient.callApi<GetStatsCommand.Response['response']>({
@@ -81,6 +92,16 @@ export class SystemController {
     >({
       method: EncryptHappCryptoLinkCommand.endpointDetails.REQUEST_METHOD,
       url: EncryptHappCryptoLinkCommand.url,
+      data,
+    });
+  }
+
+  public async testSRRMatcher(
+    data: TestSrrMatcherCommand.Request,
+  ): Promise<TestSrrMatcherCommand.Response['response']> {
+    return this.httpClient.callApi<TestSrrMatcherCommand.Response['response']>({
+      method: TestSrrMatcherCommand.endpointDetails.REQUEST_METHOD,
+      url: TestSrrMatcherCommand.url,
       data,
     });
   }

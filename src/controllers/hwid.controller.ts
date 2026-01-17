@@ -4,6 +4,7 @@ import {
   DeleteUserHwidDeviceCommand,
   GetAllHwidDevicesCommand,
   GetHwidDevicesStatsCommand,
+  GetTopUsersByHwidDevicesCommand,
   GetUserHwidDevicesCommand,
 } from '@remnawave/backend-contract';
 import type { HttpClient } from '../clients';
@@ -78,6 +79,18 @@ export class HwidController {
     >({
       method: GetHwidDevicesStatsCommand.endpointDetails.REQUEST_METHOD,
       url: GetHwidDevicesStatsCommand.url,
+    });
+  }
+
+  public async getTopUsers(
+    query: GetTopUsersByHwidDevicesCommand.RequestQuery,
+  ): Promise<GetTopUsersByHwidDevicesCommand.Response['response']> {
+    return this.httpClient.callApi<
+      GetTopUsersByHwidDevicesCommand.Response['response']
+    >({
+      method: GetTopUsersByHwidDevicesCommand.endpointDetails.REQUEST_METHOD,
+      url: GetTopUsersByHwidDevicesCommand.url,
+      params: query,
     });
   }
 }

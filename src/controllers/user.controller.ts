@@ -1,4 +1,5 @@
 import {
+  BulkAllExtendExpirationDateCommand,
   BulkAllResetTrafficUsersCommand,
   BulkAllUpdateUsersCommand,
   BulkDeleteUsersByStatusCommand,
@@ -15,13 +16,13 @@ import {
   GetAllUsersCommand,
   GetUserAccessibleNodesCommand,
   GetUserByEmailCommand,
+  GetUserByIdCommand,
   GetUserByShortUuidCommand,
   GetUserByTagCommand,
   GetUserByTelegramIdCommand,
   GetUserByUsernameCommand,
   GetUserByUuidCommand,
   GetUserSubscriptionRequestHistoryCommand,
-  GetUserUsageByRangeCommand,
   ResetUserTrafficCommand,
   RevokeUserSubscriptionCommand,
   UpdateUserCommand,
@@ -133,6 +134,15 @@ export class UserController {
     });
   }
 
+  public async getById(
+    id: string,
+  ): Promise<GetUserByIdCommand.Response['response']> {
+    return this.httpClient.callApi<GetUserByIdCommand.Response['response']>({
+      method: GetUserByIdCommand.endpointDetails.REQUEST_METHOD,
+      url: GetUserByIdCommand.url(id),
+    });
+  }
+
   public async getByTelegramId(
     telegramId: string,
   ): Promise<GetUserByTelegramIdCommand.Response['response']> {
@@ -201,19 +211,6 @@ export class UserController {
     >({
       method: ResetUserTrafficCommand.endpointDetails.REQUEST_METHOD,
       url: ResetUserTrafficCommand.url(uuid),
-    });
-  }
-
-  public async getUserUsageByRange(
-    uuid: string,
-    query: GetUserUsageByRangeCommand.RequestQuery,
-  ): Promise<GetUserUsageByRangeCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetUserUsageByRangeCommand.Response['response']
-    >({
-      method: GetUserUsageByRangeCommand.endpointDetails.REQUEST_METHOD,
-      url: GetUserUsageByRangeCommand.url(uuid),
-      params: query,
     });
   }
 
@@ -310,6 +307,18 @@ export class UserController {
     >({
       method: BulkAllUpdateUsersCommand.endpointDetails.REQUEST_METHOD,
       url: BulkAllUpdateUsersCommand.url,
+      data,
+    });
+  }
+
+  public async bulkExtendAllExpiration(
+    data: BulkAllExtendExpirationDateCommand.Request,
+  ): Promise<BulkAllExtendExpirationDateCommand.Response['response']> {
+    return this.httpClient.callApi<
+      BulkAllExtendExpirationDateCommand.Response['response']
+    >({
+      method: BulkAllExtendExpirationDateCommand.endpointDetails.REQUEST_METHOD,
+      url: BulkAllExtendExpirationDateCommand.url,
       data,
     });
   }
