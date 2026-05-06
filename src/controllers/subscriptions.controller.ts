@@ -1,5 +1,6 @@
 import {
   GetAllSubscriptionsCommand,
+  GetConnectionKeysByUuidCommand,
   GetRawSubscriptionByShortUuidCommand,
   GetSubpageConfigByShortUuidCommand,
   GetSubscriptionByShortUuidProtectedCommand,
@@ -78,6 +79,17 @@ export class SubscriptionsController {
     >({
       method: GetSubpageConfigByShortUuidCommand.endpointDetails.REQUEST_METHOD,
       url: GetSubpageConfigByShortUuidCommand.url(shortUuid),
+    });
+  }
+
+  public async getConnectionKeysByUuid(
+    uuid: string,
+  ): Promise<GetConnectionKeysByUuidCommand.Response['response']> {
+    return this.httpClient.callApi<
+      GetConnectionKeysByUuidCommand.Response['response']
+    >({
+      method: GetConnectionKeysByUuidCommand.endpointDetails.REQUEST_METHOD,
+      url: GetConnectionKeysByUuidCommand.url(uuid),
     });
   }
 }

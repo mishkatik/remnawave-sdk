@@ -7,8 +7,8 @@ import {
   EnableNodeCommand,
   GetAllNodesCommand,
   GetLegacyStatsNodeUserUsageCommand,
+  GetNodesMetricsCommand,
   GetOneNodeCommand,
-  GetStatsNodesRealtimeUsageCommand,
   GetStatsNodesUsageCommand,
   GetStatsNodeUsersUsageCommand,
   ReorderNodeCommand,
@@ -116,14 +116,14 @@ export class NodesController {
   }
 
   public async getRealtimeUsage(): Promise<
-    GetStatsNodesRealtimeUsageCommand.Response['response']
+    GetNodesMetricsCommand.Response['response']
   > {
-    return this.httpClient.callApi<
-      GetStatsNodesRealtimeUsageCommand.Response['response']
-    >({
-      method: GetStatsNodesRealtimeUsageCommand.endpointDetails.REQUEST_METHOD,
-      url: GetStatsNodesRealtimeUsageCommand.url,
-    });
+    return this.httpClient.callApi<GetNodesMetricsCommand.Response['response']>(
+      {
+        method: GetNodesMetricsCommand.endpointDetails.REQUEST_METHOD,
+        url: GetNodesMetricsCommand.url,
+      },
+    );
   }
 
   public async getUsageByRange(

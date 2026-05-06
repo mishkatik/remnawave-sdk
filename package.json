@@ -1,6 +1,6 @@
 {
   "name": "@mishkat/remnawave-sdk",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "author": "Mishkat <github.com/mishkatik>",
   "homepage": "https://github.com/mishkatik/remnawave-sdk",
   "repository": {
@@ -26,7 +26,11 @@
     "build": "bun run clean && bun run tsc",
     "prepublish": "bun run build",
     "lint": "bun x @biomejs/biome check",
-    "lint:fix": "bun run lint --fix"
+    "lint:fix": "bun run lint --fix",
+    "version:patch": "npm version patch --no-git-tag-version",
+    "version:minor": "npm version minor --no-git-tag-version",
+    "version:major": "npm version major --no-git-tag-version",
+    "release": "VERSION=$(node -p \"require('./package.json').version\") && echo \"Creating tag for version $VERSION...\" && git tag \"$VERSION\" -m \"Release $VERSION\" && git push origin --follow-tags && echo \"Tag $VERSION created and pushed\""
   },
   "keywords": [
     "remnawave",
@@ -34,15 +38,15 @@
     "api"
   ],
   "devDependencies": {
-    "@biomejs/biome": "2.3.14",
-    "@types/bun": "1.3.8"
+    "@biomejs/biome": "2.4.14",
+    "@types/bun": "1.3.13"
   },
   "peerDependencies": {
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@remnawave/backend-contract": "2.6.0",
-    "axios": "^1.13.4",
+    "@remnawave/backend-contract": "2.7.2",
+    "axios": "^1.16.0",
     "zod": "3.25.76"
   }
 }

@@ -5,6 +5,7 @@ import {
   GetMetadataCommand,
   GetNodesMetricsCommand,
   GetNodesStatisticsCommand,
+  GetRecapCommand,
   GetRemnawaveHealthCommand,
   GetStatsCommand,
   TestSrrMatcherCommand,
@@ -103,6 +104,13 @@ export class SystemController {
       method: TestSrrMatcherCommand.endpointDetails.REQUEST_METHOD,
       url: TestSrrMatcherCommand.url,
       data,
+    });
+  }
+
+  public async getRecap(): Promise<GetRecapCommand.Response['response']> {
+    return this.httpClient.callApi<GetRecapCommand.Response['response']>({
+      method: GetRecapCommand.endpointDetails.REQUEST_METHOD,
+      url: GetRecapCommand.url,
     });
   }
 }

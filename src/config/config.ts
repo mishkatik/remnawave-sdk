@@ -6,6 +6,7 @@ export const ConfigSchema = z.object({
   caddyAuthToken: z.string().optional(),
   cloudflareZeroTrustClientSecret: z.string().optional(),
   cloudflareZeroTrustClientId: z.string().optional(),
+  eGamesCookie: z.string().optional(),
 });
 
 export type Config = z.infer<typeof ConfigSchema>;

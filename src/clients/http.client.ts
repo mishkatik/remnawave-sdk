@@ -33,6 +33,11 @@ export class HttpClient {
         config.cloudflareZeroTrustClientSecret;
     }
 
+    if (config.eGamesCookie) {
+      // biome-ignore lint/complexity/useLiteralKeys: <stfu biome>
+      this.axios.defaults.headers.common['Cookie'] = config.eGamesCookie;
+    }
+
     if (config.panelUrl.startsWith('http://')) {
       this.axios.defaults.headers.common['x-forwarded-for'] = '127.0.0.1';
       this.axios.defaults.headers.common['x-forwarded-proto'] = 'https';

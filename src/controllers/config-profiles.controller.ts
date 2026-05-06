@@ -6,6 +6,7 @@ import {
   GetConfigProfileByUuidCommand,
   GetConfigProfilesCommand,
   GetInboundsByProfileUuidCommand,
+  ReorderConfigProfileCommand,
   UpdateConfigProfileCommand,
 } from '@remnawave/backend-contract';
 import type { HttpClient } from '../clients';
@@ -99,6 +100,18 @@ export class ConfigProfilesController {
     >({
       method: GetInboundsByProfileUuidCommand.endpointDetails.REQUEST_METHOD,
       url: GetInboundsByProfileUuidCommand.url(data.uuid),
+    });
+  }
+
+  public async reorder(
+    data: ReorderConfigProfileCommand.Request,
+  ): Promise<ReorderConfigProfileCommand.Response['response']> {
+    return this.httpClient.callApi<
+      ReorderConfigProfileCommand.Response['response']
+    >({
+      method: ReorderConfigProfileCommand.endpointDetails.REQUEST_METHOD,
+      url: ReorderConfigProfileCommand.url,
+      data,
     });
   }
 }

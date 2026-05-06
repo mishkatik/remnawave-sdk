@@ -58,6 +58,9 @@ const client = new RemnawaveSDK({
   // For Cloudflare Zero Trust (Optional)
   cloudflareZeroTrustClientId: "your-cf-client-id",
   cloudflareZeroTrustClientSecret: "your-cf-client-secret",
+  
+  // eGames Cookie (Optional)
+  eGamesCookie: 'your-egames-cookie'
 });
 
 ```

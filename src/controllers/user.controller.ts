@@ -24,6 +24,7 @@ import {
   GetUserByUuidCommand,
   GetUserSubscriptionRequestHistoryCommand,
   ResetUserTrafficCommand,
+  ResolveUserCommand,
   RevokeUserSubscriptionCommand,
   UpdateUserCommand,
 } from '@remnawave/backend-contract';
@@ -211,6 +212,16 @@ export class UserController {
     >({
       method: ResetUserTrafficCommand.endpointDetails.REQUEST_METHOD,
       url: ResetUserTrafficCommand.url(uuid),
+    });
+  }
+
+  public async resolve(
+    data: ResolveUserCommand.Request,
+  ): Promise<ResolveUserCommand.Response['response']> {
+    return this.httpClient.callApi<ResolveUserCommand.Response['response']>({
+      method: ResolveUserCommand.endpointDetails.REQUEST_METHOD,
+      url: ResolveUserCommand.url,
+      data,
     });
   }
 

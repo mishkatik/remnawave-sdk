@@ -4,13 +4,14 @@
     "lib": ["ESNext"],
     "target": "ES2020",
     "module": "ESNext",
+    "rootDir": "./src",
     "outDir": "./dist",
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "allowJs": true,
 
     // Output settings for npm package
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
