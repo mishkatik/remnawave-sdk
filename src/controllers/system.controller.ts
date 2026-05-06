@@ -18,99 +18,119 @@ export class SystemController {
   public async getRemnawaveInformation(): Promise<
     GetMetadataCommand.Response['response']
   > {
-    return this.httpClient.callApi<GetMetadataCommand.Response['response']>({
-      method: GetMetadataCommand.endpointDetails.REQUEST_METHOD,
-      url: GetMetadataCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetMetadataCommand.endpointDetails.REQUEST_METHOD,
+        url: GetMetadataCommand.url,
+      },
+      GetMetadataCommand.ResponseSchema,
+    );
   }
 
   public async getStats(): Promise<GetStatsCommand.Response['response']> {
-    return this.httpClient.callApi<GetStatsCommand.Response['response']>({
-      method: GetStatsCommand.endpointDetails.REQUEST_METHOD,
-      url: GetStatsCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetStatsCommand.endpointDetails.REQUEST_METHOD,
+        url: GetStatsCommand.url,
+      },
+      GetStatsCommand.ResponseSchema,
+    );
   }
 
   public async getBandwidthStats(): Promise<
     GetBandwidthStatsCommand.Response['response']
   > {
-    return this.httpClient.callApi<
-      GetBandwidthStatsCommand.Response['response']
-    >({
-      method: GetBandwidthStatsCommand.endpointDetails.REQUEST_METHOD,
-      url: GetBandwidthStatsCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetBandwidthStatsCommand.endpointDetails.REQUEST_METHOD,
+        url: GetBandwidthStatsCommand.url,
+      },
+      GetBandwidthStatsCommand.ResponseSchema,
+    );
   }
 
   public async getNodesMetrics(): Promise<
     GetNodesMetricsCommand.Response['response']
   > {
-    return this.httpClient.callApi<GetNodesMetricsCommand.Response['response']>(
+    return this.httpClient.callApi(
       {
         method: GetNodesMetricsCommand.endpointDetails.REQUEST_METHOD,
         url: GetNodesMetricsCommand.url,
       },
+      GetNodesMetricsCommand.ResponseSchema,
     );
   }
 
   public async getNodesStatistics(
     data?: GetNodesStatisticsCommand.Request,
   ): Promise<GetNodesStatisticsCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetNodesStatisticsCommand.Response['response']
-    >({
-      method: GetNodesStatisticsCommand.endpointDetails.REQUEST_METHOD,
-      url: GetNodesStatisticsCommand.url,
-      params: data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetNodesStatisticsCommand.endpointDetails.REQUEST_METHOD,
+        url: GetNodesStatisticsCommand.url,
+        params: data,
+      },
+      GetNodesStatisticsCommand.ResponseSchema,
+    );
   }
 
   public async getRemnawaveHealth(): Promise<
     GetRemnawaveHealthCommand.Response['response']
   > {
-    return this.httpClient.callApi<
-      GetRemnawaveHealthCommand.Response['response']
-    >({
-      method: GetRemnawaveHealthCommand.endpointDetails.REQUEST_METHOD,
-      url: GetRemnawaveHealthCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetRemnawaveHealthCommand.endpointDetails.REQUEST_METHOD,
+        url: GetRemnawaveHealthCommand.url,
+      },
+      GetRemnawaveHealthCommand.ResponseSchema,
+    );
   }
 
   public async generateX25519(): Promise<
     GenerateX25519Command.Response['response']
   > {
-    return this.httpClient.callApi<GenerateX25519Command.Response['response']>({
-      method: GenerateX25519Command.endpointDetails.REQUEST_METHOD,
-      url: GenerateX25519Command.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GenerateX25519Command.endpointDetails.REQUEST_METHOD,
+        url: GenerateX25519Command.url,
+      },
+      GenerateX25519Command.ResponseSchema,
+    );
   }
 
   public async encryptHappCryptoLink(
     data: EncryptHappCryptoLinkCommand.Request,
   ): Promise<EncryptHappCryptoLinkCommand.Response['response']> {
-    return this.httpClient.callApi<
-      EncryptHappCryptoLinkCommand.Response['response']
-    >({
-      method: EncryptHappCryptoLinkCommand.endpointDetails.REQUEST_METHOD,
-      url: EncryptHappCryptoLinkCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: EncryptHappCryptoLinkCommand.endpointDetails.REQUEST_METHOD,
+        url: EncryptHappCryptoLinkCommand.url,
+        data,
+      },
+      EncryptHappCryptoLinkCommand.ResponseSchema,
+    );
   }
 
   public async testSRRMatcher(
     data: TestSrrMatcherCommand.Request,
   ): Promise<TestSrrMatcherCommand.Response['response']> {
-    return this.httpClient.callApi<TestSrrMatcherCommand.Response['response']>({
-      method: TestSrrMatcherCommand.endpointDetails.REQUEST_METHOD,
-      url: TestSrrMatcherCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: TestSrrMatcherCommand.endpointDetails.REQUEST_METHOD,
+        url: TestSrrMatcherCommand.url,
+        data,
+      },
+      TestSrrMatcherCommand.ResponseSchema,
+    );
   }
 
   public async getRecap(): Promise<GetRecapCommand.Response['response']> {
-    return this.httpClient.callApi<GetRecapCommand.Response['response']>({
-      method: GetRecapCommand.endpointDetails.REQUEST_METHOD,
-      url: GetRecapCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetRecapCommand.endpointDetails.REQUEST_METHOD,
+        url: GetRecapCommand.url,
+      },
+      GetRecapCommand.ResponseSchema,
+    );
   }
 }

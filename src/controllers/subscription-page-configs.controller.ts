@@ -15,85 +15,94 @@ export class SubscriptionPageConfigsController {
   public async getAll(): Promise<
     GetSubscriptionPageConfigsCommand.Response['response']
   > {
-    return this.httpClient.callApi<
-      GetSubscriptionPageConfigsCommand.Response['response']
-    >({
-      method: GetSubscriptionPageConfigsCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionPageConfigsCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          GetSubscriptionPageConfigsCommand.endpointDetails.REQUEST_METHOD,
+        url: GetSubscriptionPageConfigsCommand.url,
+      },
+      GetSubscriptionPageConfigsCommand.ResponseSchema,
+    );
   }
 
   public async update(
     data: UpdateSubscriptionPageConfigCommand.Request,
   ): Promise<UpdateSubscriptionPageConfigCommand.Response['response']> {
-    return this.httpClient.callApi<
-      UpdateSubscriptionPageConfigCommand.Response['response']
-    >({
-      method:
-        UpdateSubscriptionPageConfigCommand.endpointDetails.REQUEST_METHOD,
-      url: UpdateSubscriptionPageConfigCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          UpdateSubscriptionPageConfigCommand.endpointDetails.REQUEST_METHOD,
+        url: UpdateSubscriptionPageConfigCommand.url,
+        data,
+      },
+      UpdateSubscriptionPageConfigCommand.ResponseSchema,
+    );
   }
 
   public async create(
     data: CreateSubscriptionPageConfigCommand.Request,
   ): Promise<CreateSubscriptionPageConfigCommand.Response['response']> {
-    return this.httpClient.callApi<
-      CreateSubscriptionPageConfigCommand.Response['response']
-    >({
-      method:
-        CreateSubscriptionPageConfigCommand.endpointDetails.REQUEST_METHOD,
-      url: CreateSubscriptionPageConfigCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          CreateSubscriptionPageConfigCommand.endpointDetails.REQUEST_METHOD,
+        url: CreateSubscriptionPageConfigCommand.url,
+        data,
+      },
+      CreateSubscriptionPageConfigCommand.ResponseSchema,
+    );
   }
 
   public async getByUuid(
     uuid: string,
   ): Promise<GetSubscriptionPageConfigCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetSubscriptionPageConfigCommand.Response['response']
-    >({
-      method: GetSubscriptionPageConfigCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionPageConfigCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetSubscriptionPageConfigCommand.endpointDetails.REQUEST_METHOD,
+        url: GetSubscriptionPageConfigCommand.url(uuid),
+      },
+      GetSubscriptionPageConfigCommand.ResponseSchema,
+    );
   }
 
   public async delete(
     uuid: string,
   ): Promise<DeleteSubscriptionPageConfigCommand.Response['response']> {
-    return this.httpClient.callApi<
-      DeleteSubscriptionPageConfigCommand.Response['response']
-    >({
-      method:
-        DeleteSubscriptionPageConfigCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteSubscriptionPageConfigCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          DeleteSubscriptionPageConfigCommand.endpointDetails.REQUEST_METHOD,
+        url: DeleteSubscriptionPageConfigCommand.url(uuid),
+      },
+      DeleteSubscriptionPageConfigCommand.ResponseSchema,
+    );
   }
 
   public async reorder(
     data: ReorderSubscriptionPageConfigsCommand.Request,
   ): Promise<ReorderSubscriptionPageConfigsCommand.Response['response']> {
-    return this.httpClient.callApi<
-      ReorderSubscriptionPageConfigsCommand.Response['response']
-    >({
-      method:
-        ReorderSubscriptionPageConfigsCommand.endpointDetails.REQUEST_METHOD,
-      url: ReorderSubscriptionPageConfigsCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          ReorderSubscriptionPageConfigsCommand.endpointDetails.REQUEST_METHOD,
+        url: ReorderSubscriptionPageConfigsCommand.url,
+        data,
+      },
+      ReorderSubscriptionPageConfigsCommand.ResponseSchema,
+    );
   }
 
   public async clone(
     data: CloneSubscriptionPageConfigCommand.Request,
   ): Promise<CloneSubscriptionPageConfigCommand.Response['response']> {
-    return this.httpClient.callApi<
-      CloneSubscriptionPageConfigCommand.Response['response']
-    >({
-      method: CloneSubscriptionPageConfigCommand.endpointDetails.REQUEST_METHOD,
-      url: CloneSubscriptionPageConfigCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          CloneSubscriptionPageConfigCommand.endpointDetails.REQUEST_METHOD,
+        url: CloneSubscriptionPageConfigCommand.url,
+        data,
+      },
+      CloneSubscriptionPageConfigCommand.ResponseSchema,
+    );
   }
 }

@@ -7,12 +7,13 @@ export class SubscriptionController {
   public async getInfoByShortUuid(
     shortUuid: string,
   ): Promise<GetSubscriptionInfoByShortUuidCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetSubscriptionInfoByShortUuidCommand.Response['response']
-    >({
-      method:
-        GetSubscriptionInfoByShortUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionInfoByShortUuidCommand.url(shortUuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          GetSubscriptionInfoByShortUuidCommand.endpointDetails.REQUEST_METHOD,
+        url: GetSubscriptionInfoByShortUuidCommand.url(shortUuid),
+      },
+      GetSubscriptionInfoByShortUuidCommand.ResponseSchema,
+    );
   }
 }

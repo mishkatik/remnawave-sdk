@@ -10,23 +10,26 @@ export class SubscriptionSettingsController {
   public async getSettings(): Promise<
     GetSubscriptionSettingsCommand.Response['response']
   > {
-    return this.httpClient.callApi<
-      GetSubscriptionSettingsCommand.Response['response']
-    >({
-      method: GetSubscriptionSettingsCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionSettingsCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetSubscriptionSettingsCommand.endpointDetails.REQUEST_METHOD,
+        url: GetSubscriptionSettingsCommand.url,
+      },
+      GetSubscriptionSettingsCommand.ResponseSchema,
+    );
   }
 
   public async updateSettings(
     data: UpdateSubscriptionSettingsCommand.Request,
   ): Promise<UpdateSubscriptionSettingsCommand.Response['response']> {
-    return this.httpClient.callApi<
-      UpdateSubscriptionSettingsCommand.Response['response']
-    >({
-      method: UpdateSubscriptionSettingsCommand.endpointDetails.REQUEST_METHOD,
-      url: UpdateSubscriptionSettingsCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          UpdateSubscriptionSettingsCommand.endpointDetails.REQUEST_METHOD,
+        url: UpdateSubscriptionSettingsCommand.url,
+        data,
+      },
+      UpdateSubscriptionSettingsCommand.ResponseSchema,
+    );
   }
 }

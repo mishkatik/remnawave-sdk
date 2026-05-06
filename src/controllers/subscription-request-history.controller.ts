@@ -10,26 +10,28 @@ export class SubscriptionRequestHistoryController {
   public async getHistory(
     data: GetSubscriptionRequestHistoryCommand.RequestQuery,
   ): Promise<GetSubscriptionRequestHistoryCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetSubscriptionRequestHistoryCommand.Response['response']
-    >({
-      method:
-        GetSubscriptionRequestHistoryCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionRequestHistoryCommand.url,
-      params: data,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          GetSubscriptionRequestHistoryCommand.endpointDetails.REQUEST_METHOD,
+        url: GetSubscriptionRequestHistoryCommand.url,
+        params: data,
+      },
+      GetSubscriptionRequestHistoryCommand.ResponseSchema,
+    );
   }
 
   public async getStats(): Promise<
     GetSubscriptionRequestHistoryStatsCommand.Response['response']
   > {
-    return this.httpClient.callApi<
-      GetSubscriptionRequestHistoryStatsCommand.Response['response']
-    >({
-      method:
-        GetSubscriptionRequestHistoryStatsCommand.endpointDetails
-          .REQUEST_METHOD,
-      url: GetSubscriptionRequestHistoryStatsCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          GetSubscriptionRequestHistoryStatsCommand.endpointDetails
+            .REQUEST_METHOD,
+        url: GetSubscriptionRequestHistoryStatsCommand.url,
+      },
+      GetSubscriptionRequestHistoryStatsCommand.ResponseSchema,
+    );
   }
 }

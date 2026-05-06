@@ -5,9 +5,12 @@ export class KeygenController {
   constructor(private readonly httpClient: HttpClient) {}
 
   public async getPubkey(): Promise<GetPubKeyCommand.Response['response']> {
-    return this.httpClient.callApi<GetPubKeyCommand.Response['response']>({
-      method: GetPubKeyCommand.endpointDetails.REQUEST_METHOD,
-      url: GetPubKeyCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetPubKeyCommand.endpointDetails.REQUEST_METHOD,
+        url: GetPubKeyCommand.url,
+      },
+      GetPubKeyCommand.ResponseSchema,
+    );
   }
 }

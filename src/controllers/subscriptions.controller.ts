@@ -15,81 +15,89 @@ export class SubscriptionsController {
   public async getAll(
     data: GetAllSubscriptionsCommand.RequestQuery,
   ): Promise<GetAllSubscriptionsCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetAllSubscriptionsCommand.Response['response']
-    >({
-      method: GetAllSubscriptionsCommand.endpointDetails.REQUEST_METHOD,
-      url: GetAllSubscriptionsCommand.url,
-      params: data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetAllSubscriptionsCommand.endpointDetails.REQUEST_METHOD,
+        url: GetAllSubscriptionsCommand.url,
+        params: data,
+      },
+      GetAllSubscriptionsCommand.ResponseSchema,
+    );
   }
 
   public async getByUuid(
     uuid: string,
   ): Promise<GetSubscriptionByUuidCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetSubscriptionByUuidCommand.Response['response']
-    >({
-      method: GetSubscriptionByUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionByUuidCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetSubscriptionByUuidCommand.endpointDetails.REQUEST_METHOD,
+        url: GetSubscriptionByUuidCommand.url(uuid),
+      },
+      GetSubscriptionByUuidCommand.ResponseSchema,
+    );
   }
 
   public async getByUsername(
     username: string,
   ): Promise<GetSubscriptionByUsernameCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetSubscriptionByUsernameCommand.Response['response']
-    >({
-      method: GetSubscriptionByUsernameCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionByUsernameCommand.url(username),
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetSubscriptionByUsernameCommand.endpointDetails.REQUEST_METHOD,
+        url: GetSubscriptionByUsernameCommand.url(username),
+      },
+      GetSubscriptionByUsernameCommand.ResponseSchema,
+    );
   }
 
   public async getByShortUuidProtected(
     shortUuid: string,
   ): Promise<GetSubscriptionByShortUuidProtectedCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetSubscriptionByShortUuidProtectedCommand.Response['response']
-    >({
-      method:
-        GetSubscriptionByShortUuidProtectedCommand.endpointDetails
-          .REQUEST_METHOD,
-      url: GetSubscriptionByShortUuidProtectedCommand.url(shortUuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          GetSubscriptionByShortUuidProtectedCommand.endpointDetails
+            .REQUEST_METHOD,
+        url: GetSubscriptionByShortUuidProtectedCommand.url(shortUuid),
+      },
+      GetSubscriptionByShortUuidProtectedCommand.ResponseSchema,
+    );
   }
 
   public async getRawByShortUuid(
     shortUuid: string,
   ): Promise<GetRawSubscriptionByShortUuidCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetRawSubscriptionByShortUuidCommand.Response['response']
-    >({
-      method:
-        GetRawSubscriptionByShortUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetRawSubscriptionByShortUuidCommand.url(shortUuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          GetRawSubscriptionByShortUuidCommand.endpointDetails.REQUEST_METHOD,
+        url: GetRawSubscriptionByShortUuidCommand.url(shortUuid),
+      },
+      GetRawSubscriptionByShortUuidCommand.ResponseSchema,
+    );
   }
 
   public async getSubPageConfigByShortUuid(
     shortUuid: string,
   ): Promise<GetSubpageConfigByShortUuidCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetSubpageConfigByShortUuidCommand.Response['response']
-    >({
-      method: GetSubpageConfigByShortUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubpageConfigByShortUuidCommand.url(shortUuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          GetSubpageConfigByShortUuidCommand.endpointDetails.REQUEST_METHOD,
+        url: GetSubpageConfigByShortUuidCommand.url(shortUuid),
+      },
+      GetSubpageConfigByShortUuidCommand.ResponseSchema,
+    );
   }
 
   public async getConnectionKeysByUuid(
     uuid: string,
   ): Promise<GetConnectionKeysByUuidCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetConnectionKeysByUuidCommand.Response['response']
-    >({
-      method: GetConnectionKeysByUuidCommand.endpointDetails.REQUEST_METHOD,
-      url: GetConnectionKeysByUuidCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetConnectionKeysByUuidCommand.endpointDetails.REQUEST_METHOD,
+        url: GetConnectionKeysByUuidCommand.url(uuid),
+      },
+      GetConnectionKeysByUuidCommand.ResponseSchema,
+    );
   }
 }

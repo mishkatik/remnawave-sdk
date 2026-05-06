@@ -25,178 +25,214 @@ export class NodesController {
   public async create(
     data: CreateNodeCommand.Request,
   ): Promise<CreateNodeCommand.Response['response']> {
-    return this.httpClient.callApi<CreateNodeCommand.Response['response']>({
-      method: CreateNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: CreateNodeCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: CreateNodeCommand.endpointDetails.REQUEST_METHOD,
+        url: CreateNodeCommand.url,
+        data,
+      },
+      CreateNodeCommand.ResponseSchema,
+    );
   }
 
   public async update(
     data: UpdateNodeCommand.Request,
   ): Promise<UpdateNodeCommand.Response['response']> {
-    return this.httpClient.callApi<UpdateNodeCommand.Response['response']>({
-      method: UpdateNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: UpdateNodeCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: UpdateNodeCommand.endpointDetails.REQUEST_METHOD,
+        url: UpdateNodeCommand.url,
+        data,
+      },
+      UpdateNodeCommand.ResponseSchema,
+    );
   }
 
   public async delete(
     uuid: string,
   ): Promise<DeleteNodeCommand.Response['response']> {
-    return this.httpClient.callApi<DeleteNodeCommand.Response['response']>({
-      method: DeleteNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteNodeCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method: DeleteNodeCommand.endpointDetails.REQUEST_METHOD,
+        url: DeleteNodeCommand.url(uuid),
+      },
+      DeleteNodeCommand.ResponseSchema,
+    );
   }
 
   public async getAll(): Promise<GetAllNodesCommand.Response['response']> {
-    return this.httpClient.callApi<GetAllNodesCommand.Response['response']>({
-      method: GetAllNodesCommand.endpointDetails.REQUEST_METHOD,
-      url: GetAllNodesCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetAllNodesCommand.endpointDetails.REQUEST_METHOD,
+        url: GetAllNodesCommand.url,
+      },
+      GetAllNodesCommand.ResponseSchema,
+    );
   }
 
   public async getOne(
     uuid: string,
   ): Promise<GetOneNodeCommand.Response['response']> {
-    return this.httpClient.callApi<GetOneNodeCommand.Response['response']>({
-      method: GetOneNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: GetOneNodeCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetOneNodeCommand.endpointDetails.REQUEST_METHOD,
+        url: GetOneNodeCommand.url(uuid),
+      },
+      GetOneNodeCommand.ResponseSchema,
+    );
   }
 
   public async enable(
     uuid: string,
   ): Promise<EnableNodeCommand.Response['response']> {
-    return this.httpClient.callApi<EnableNodeCommand.Response['response']>({
-      method: EnableNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: EnableNodeCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method: EnableNodeCommand.endpointDetails.REQUEST_METHOD,
+        url: EnableNodeCommand.url(uuid),
+      },
+      EnableNodeCommand.ResponseSchema,
+    );
   }
 
   public async disable(
     uuid: string,
   ): Promise<DisableNodeCommand.Response['response']> {
-    return this.httpClient.callApi<DisableNodeCommand.Response['response']>({
-      method: DisableNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: DisableNodeCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method: DisableNodeCommand.endpointDetails.REQUEST_METHOD,
+        url: DisableNodeCommand.url(uuid),
+      },
+      DisableNodeCommand.ResponseSchema,
+    );
   }
 
   public async restart(
     uuid: string,
   ): Promise<RestartNodeCommand.Response['response']> {
-    return this.httpClient.callApi<RestartNodeCommand.Response['response']>({
-      method: RestartNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: RestartNodeCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method: RestartNodeCommand.endpointDetails.REQUEST_METHOD,
+        url: RestartNodeCommand.url(uuid),
+      },
+      RestartNodeCommand.ResponseSchema,
+    );
   }
 
   public async restartAll(): Promise<
     RestartAllNodesCommand.Response['response']
   > {
-    return this.httpClient.callApi<RestartAllNodesCommand.Response['response']>(
+    return this.httpClient.callApi(
       {
         method: RestartAllNodesCommand.endpointDetails.REQUEST_METHOD,
         url: RestartAllNodesCommand.url,
       },
+      RestartAllNodesCommand.ResponseSchema,
     );
   }
 
   public async reorder(
     data: ReorderNodeCommand.Request,
   ): Promise<ReorderNodeCommand.Response['response']> {
-    return this.httpClient.callApi<ReorderNodeCommand.Response['response']>({
-      method: ReorderNodeCommand.endpointDetails.REQUEST_METHOD,
-      url: ReorderNodeCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: ReorderNodeCommand.endpointDetails.REQUEST_METHOD,
+        url: ReorderNodeCommand.url,
+        data,
+      },
+      ReorderNodeCommand.ResponseSchema,
+    );
   }
 
   public async getRealtimeUsage(): Promise<
     GetNodesMetricsCommand.Response['response']
   > {
-    return this.httpClient.callApi<GetNodesMetricsCommand.Response['response']>(
+    return this.httpClient.callApi(
       {
         method: GetNodesMetricsCommand.endpointDetails.REQUEST_METHOD,
         url: GetNodesMetricsCommand.url,
       },
+      GetNodesMetricsCommand.ResponseSchema,
     );
   }
 
   public async getUsageByRange(
     data: GetStatsNodesUsageCommand.RequestQuery,
   ): Promise<GetStatsNodesUsageCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetStatsNodesUsageCommand.Response['response']
-    >({
-      method: GetStatsNodesUsageCommand.endpointDetails.REQUEST_METHOD,
-      url: GetStatsNodesUsageCommand.url,
-      params: data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetStatsNodesUsageCommand.endpointDetails.REQUEST_METHOD,
+        url: GetStatsNodesUsageCommand.url,
+        params: data,
+      },
+      GetStatsNodesUsageCommand.ResponseSchema,
+    );
   }
 
   public async getNodeUserUsageByRange(
     uuid: string,
     query: GetStatsNodeUsersUsageCommand.RequestQuery,
   ): Promise<GetStatsNodeUsersUsageCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetStatsNodeUsersUsageCommand.Response['response']
-    >({
-      method: GetStatsNodeUsersUsageCommand.endpointDetails.REQUEST_METHOD,
-      url: GetStatsNodeUsersUsageCommand.url(uuid),
-      params: query,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetStatsNodeUsersUsageCommand.endpointDetails.REQUEST_METHOD,
+        url: GetStatsNodeUsersUsageCommand.url(uuid),
+        params: query,
+      },
+      GetStatsNodeUsersUsageCommand.ResponseSchema,
+    );
   }
 
   public async getNodeUserUsageByRangeLegacy(
     uuid: string,
     query: GetLegacyStatsNodeUserUsageCommand.RequestQuery,
   ): Promise<GetLegacyStatsNodeUserUsageCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetLegacyStatsNodeUserUsageCommand.Response['response']
-    >({
-      method: GetLegacyStatsNodeUserUsageCommand.endpointDetails.REQUEST_METHOD,
-      url: GetLegacyStatsNodeUserUsageCommand.url(uuid),
-      params: query,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          GetLegacyStatsNodeUserUsageCommand.endpointDetails.REQUEST_METHOD,
+        url: GetLegacyStatsNodeUserUsageCommand.url(uuid),
+        params: query,
+      },
+      GetLegacyStatsNodeUserUsageCommand.ResponseSchema,
+    );
   }
 
   public async resetTraffic(
     uuid: string,
   ): Promise<ResetNodeTrafficCommand.Response['response']> {
-    return this.httpClient.callApi<
-      ResetNodeTrafficCommand.Response['response']
-    >({
-      method: ResetNodeTrafficCommand.endpointDetails.REQUEST_METHOD,
-      url: ResetNodeTrafficCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method: ResetNodeTrafficCommand.endpointDetails.REQUEST_METHOD,
+        url: ResetNodeTrafficCommand.url(uuid),
+      },
+      ResetNodeTrafficCommand.ResponseSchema,
+    );
   }
 
   public async bulkProfileModification(
     data: BulkNodesProfileModificationCommand.Request,
   ): Promise<BulkNodesProfileModificationCommand.Response['response']> {
-    return this.httpClient.callApi<
-      BulkNodesProfileModificationCommand.Response['response']
-    >({
-      method:
-        BulkNodesProfileModificationCommand.endpointDetails.REQUEST_METHOD,
-      url: BulkNodesProfileModificationCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          BulkNodesProfileModificationCommand.endpointDetails.REQUEST_METHOD,
+        url: BulkNodesProfileModificationCommand.url,
+        data,
+      },
+      BulkNodesProfileModificationCommand.ResponseSchema,
+    );
   }
 
   public async bulkAction(
     data: BulkNodesActionsCommand.Request,
   ): Promise<BulkNodesActionsCommand.Response['response']> {
-    return this.httpClient.callApi<
-      BulkNodesActionsCommand.Response['response']
-    >({
-      method: BulkNodesActionsCommand.endpointDetails.REQUEST_METHOD,
-      url: BulkNodesActionsCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: BulkNodesActionsCommand.endpointDetails.REQUEST_METHOD,
+        url: BulkNodesActionsCommand.url,
+        data,
+      },
+      BulkNodesActionsCommand.ResponseSchema,
+    );
   }
 }

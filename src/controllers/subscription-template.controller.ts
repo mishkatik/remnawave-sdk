@@ -14,69 +14,79 @@ export class SubscriptionTemplateController {
   public async getAllTemplates(): Promise<
     GetSubscriptionTemplatesCommand.Response['response']
   > {
-    return this.httpClient.callApi<
-      GetSubscriptionTemplatesCommand.Response['response']
-    >({
-      method: GetSubscriptionTemplatesCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionTemplatesCommand.url,
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetSubscriptionTemplatesCommand.endpointDetails.REQUEST_METHOD,
+        url: GetSubscriptionTemplatesCommand.url,
+      },
+      GetSubscriptionTemplatesCommand.ResponseSchema,
+    );
   }
 
   public async createTemplate(
     data: CreateSubscriptionTemplateCommand.Request,
   ): Promise<CreateSubscriptionTemplateCommand.Response['response']> {
-    return this.httpClient.callApi<
-      CreateSubscriptionTemplateCommand.Response['response']
-    >({
-      method: CreateSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
-      url: CreateSubscriptionTemplateCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          CreateSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
+        url: CreateSubscriptionTemplateCommand.url,
+        data,
+      },
+      CreateSubscriptionTemplateCommand.ResponseSchema,
+    );
   }
 
   public async getTemplate(
     uuid: string,
   ): Promise<GetSubscriptionTemplateCommand.Response['response']> {
-    return this.httpClient.callApi<
-      GetSubscriptionTemplateCommand.Response['response']
-    >({
-      method: GetSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
-      url: GetSubscriptionTemplateCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method: GetSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
+        url: GetSubscriptionTemplateCommand.url(uuid),
+      },
+      GetSubscriptionTemplateCommand.ResponseSchema,
+    );
   }
 
   public async updateTemplate(
     data: UpdateSubscriptionTemplateCommand.Request,
   ): Promise<UpdateSubscriptionTemplateCommand.Response['response']> {
-    return this.httpClient.callApi<
-      UpdateSubscriptionTemplateCommand.Response['response']
-    >({
-      method: UpdateSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
-      url: UpdateSubscriptionTemplateCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          UpdateSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
+        url: UpdateSubscriptionTemplateCommand.url,
+        data,
+      },
+      UpdateSubscriptionTemplateCommand.ResponseSchema,
+    );
   }
 
   public async deleteTemplate(
     uuid: string,
   ): Promise<DeleteSubscriptionTemplateCommand.Response['response']> {
-    return this.httpClient.callApi<
-      DeleteSubscriptionTemplateCommand.Response['response']
-    >({
-      method: DeleteSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
-      url: DeleteSubscriptionTemplateCommand.url(uuid),
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          DeleteSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
+        url: DeleteSubscriptionTemplateCommand.url(uuid),
+      },
+      DeleteSubscriptionTemplateCommand.ResponseSchema,
+    );
   }
 
   public async reorder(
     data: ReorderSubscriptionTemplateCommand.Request,
   ): Promise<ReorderSubscriptionTemplateCommand.Response['response']> {
-    return this.httpClient.callApi<
-      ReorderSubscriptionTemplateCommand.Response['response']
-    >({
-      method: ReorderSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
-      url: ReorderSubscriptionTemplateCommand.url,
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method:
+          ReorderSubscriptionTemplateCommand.endpointDetails.REQUEST_METHOD,
+        url: ReorderSubscriptionTemplateCommand.url,
+        data,
+      },
+      ReorderSubscriptionTemplateCommand.ResponseSchema,
+    );
   }
 }

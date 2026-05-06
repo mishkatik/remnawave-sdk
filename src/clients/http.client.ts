@@ -3,8 +3,8 @@ import axios, {
   type AxiosRequestConfig,
   isAxiosError,
 } from 'axios';
+import { z } from 'zod';
 import type { Config } from '../config/config.js';
-import type { ApiResponse } from '../interfaces/api-response.interface.ts';
 
 export class HttpClient {
   public readonly axios: AxiosInstance;
@@ -44,11 +44,20 @@ export class HttpClient {
     }
   }
 
-  async callApi<T>(config: AxiosRequestConfig): Promise<T> {
+  /** Executes an API request, validates the response envelope with the provided Zod schema, and returns the inner `response` field. */
+  async callApi<TSchema extends z.ZodObject<{ response: z.ZodTypeAny }>>(
+    config: AxiosRequestConfig,
+    schema: TSchema,
+  ): Promise<z.infer<TSchema>['response']> {
     try {
-      const response = await this.axios.request<ApiResponse<T>>(config);
-      return response.data.response;
+      const response = await this.axios.request(config);
+      const parsed = schema.parse(response.data);
+      return parsed.response;
     } catch (error) {
+      if (error instanceof z.ZodError) {
+        throw new Error(`Validation Error: ${error.message}`);
+      }
+
       if (isAxiosError(error)) {
         const message = error.response?.data
           ? `API Error: ${JSON.stringify(error.response.data)}`

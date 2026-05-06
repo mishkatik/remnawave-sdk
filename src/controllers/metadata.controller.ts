@@ -12,11 +12,12 @@ export class MetadataController {
   public async getUserMetadata(
     uuid: string,
   ): Promise<GetUserMetadataCommand.Response['response']> {
-    return this.httpClient.callApi<GetUserMetadataCommand.Response['response']>(
+    return this.httpClient.callApi(
       {
         method: GetUserMetadataCommand.endpointDetails.REQUEST_METHOD,
         url: GetUserMetadataCommand.url(uuid),
       },
+      GetUserMetadataCommand.ResponseSchema,
     );
   }
 
@@ -24,23 +25,25 @@ export class MetadataController {
     uuid: string,
     data: UpsertUserMetadataCommand.RequestBody,
   ): Promise<UpsertUserMetadataCommand.Response['response']> {
-    return this.httpClient.callApi<
-      UpsertUserMetadataCommand.Response['response']
-    >({
-      method: UpsertUserMetadataCommand.endpointDetails.REQUEST_METHOD,
-      url: UpsertUserMetadataCommand.url(uuid),
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: UpsertUserMetadataCommand.endpointDetails.REQUEST_METHOD,
+        url: UpsertUserMetadataCommand.url(uuid),
+        data,
+      },
+      UpsertUserMetadataCommand.ResponseSchema,
+    );
   }
 
   public async getNodeMetadata(
     uuid: string,
   ): Promise<GetNodeMetadataCommand.Response['response']> {
-    return this.httpClient.callApi<GetNodeMetadataCommand.Response['response']>(
+    return this.httpClient.callApi(
       {
         method: GetNodeMetadataCommand.endpointDetails.REQUEST_METHOD,
         url: GetNodeMetadataCommand.url(uuid),
       },
+      GetNodeMetadataCommand.ResponseSchema,
     );
   }
 
@@ -48,12 +51,13 @@ export class MetadataController {
     uuid: string,
     data: UpsertNodeMetadataCommand.RequestBody,
   ): Promise<UpsertNodeMetadataCommand.Response['response']> {
-    return this.httpClient.callApi<
-      UpsertNodeMetadataCommand.Response['response']
-    >({
-      method: UpsertNodeMetadataCommand.endpointDetails.REQUEST_METHOD,
-      url: UpsertNodeMetadataCommand.url(uuid),
-      data,
-    });
+    return this.httpClient.callApi(
+      {
+        method: UpsertNodeMetadataCommand.endpointDetails.REQUEST_METHOD,
+        url: UpsertNodeMetadataCommand.url(uuid),
+        data,
+      },
+      UpsertNodeMetadataCommand.ResponseSchema,
+    );
   }
 }
