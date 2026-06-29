@@ -5,6 +5,11 @@ import axios, {
 } from 'axios';
 import { z } from 'zod';
 import type { Config } from '../config/config.js';
+import {
+  RemnawaveApiError,
+  type RemnawaveApiErrorBody,
+  RemnawaveValidationError,
+} from './errors';
 
 export class HttpClient {
   public readonly axios: AxiosInstance;
@@ -55,22 +60,34 @@ export class HttpClient {
       return parsed.response;
     } catch (error) {
       if (error instanceof z.ZodError) {
-        throw new Error(`Validation Error: ${error.message}`);
+        throw new RemnawaveValidationError(error);
       }
 
       if (isAxiosError(error)) {
-        const message = error.response?.data
-          ? `API Error: ${JSON.stringify(error.response.data)}`
-          : `Network Error: ${error.message}`;
+        const data = error.response?.data as RemnawaveApiErrorBody | undefined;
 
-        throw new Error(message);
+        if (error.response) {
+          throw new RemnawaveApiError(`API Error: ${JSON.stringify(data)}`, {
+            status: error.response.status,
+            errorCode:
+              data && typeof data === 'object' ? data.errorCode : undefined,
+            data,
+            cause: error,
+          });
+        }
+
+        throw new RemnawaveApiError(`Network Error: ${error.message}`, {
+          cause: error,
+        });
       }
 
       if (error instanceof Error) {
-        throw new Error(`API Error: ${error.message}`);
+        throw new RemnawaveApiError(`API Error: ${error.message}`, {
+          cause: error,
+        });
       }
 
-      throw new Error(`API Error: ${String(error)}`);
+      throw new RemnawaveApiError(`API Error: ${String(error)}`);
     }
   }
 }

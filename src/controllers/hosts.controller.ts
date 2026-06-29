@@ -8,9 +8,8 @@ import {
   GetAllHostTagsCommand,
   GetOneHostCommand,
   ReorderHostCommand,
-  SetInboundToManyHostsCommand,
-  SetPortToManyHostsCommand,
   UpdateHostCommand,
+  UpdateManyHostsCommand,
 } from '@remnawave/backend-contract';
 import type { HttpClient } from '../clients';
 
@@ -141,29 +140,16 @@ export class HostsController {
     );
   }
 
-  public async setInboundToMany(
-    data: SetInboundToManyHostsCommand.Request,
-  ): Promise<SetInboundToManyHostsCommand.Response['response']> {
+  public async updateMany(
+    data: UpdateManyHostsCommand.Request,
+  ): Promise<UpdateManyHostsCommand.Response['response']> {
     return this.httpClient.callApi(
       {
-        method: SetInboundToManyHostsCommand.endpointDetails.REQUEST_METHOD,
-        url: SetInboundToManyHostsCommand.url,
+        method: UpdateManyHostsCommand.endpointDetails.REQUEST_METHOD,
+        url: UpdateManyHostsCommand.url,
         data,
       },
-      SetInboundToManyHostsCommand.ResponseSchema,
-    );
-  }
-
-  public async setPortToMany(
-    data: SetPortToManyHostsCommand.Request,
-  ): Promise<SetPortToManyHostsCommand.Response['response']> {
-    return this.httpClient.callApi(
-      {
-        method: SetPortToManyHostsCommand.endpointDetails.REQUEST_METHOD,
-        url: SetPortToManyHostsCommand.url,
-        data,
-      },
-      SetPortToManyHostsCommand.ResponseSchema,
+      UpdateManyHostsCommand.ResponseSchema,
     );
   }
 }

@@ -4,6 +4,7 @@ import {
   BulkAllUpdateUsersCommand,
   BulkDeleteUsersByStatusCommand,
   BulkDeleteUsersCommand,
+  BulkExtendExpirationDateCommand,
   BulkResetTrafficUsersCommand,
   BulkRevokeUsersSubscriptionCommand,
   BulkUpdateUsersCommand,
@@ -23,6 +24,7 @@ import {
   GetUserByUsernameCommand,
   GetUserByUuidCommand,
   GetUserSubscriptionRequestHistoryCommand,
+  GetUsersStreamCommand,
   ResetUserTrafficCommand,
   ResolveUserCommand,
   RevokeUserSubscriptionCommand,
@@ -69,6 +71,19 @@ export class UserController {
         params: data,
       },
       GetAllUsersCommand.ResponseSchema,
+    );
+  }
+
+  public async getStream(
+    params?: GetUsersStreamCommand.RequestQuery,
+  ): Promise<GetUsersStreamCommand.Response['response']> {
+    return this.httpClient.callApi(
+      {
+        method: GetUsersStreamCommand.endpointDetails.REQUEST_METHOD,
+        url: GetUsersStreamCommand.url,
+        params,
+      },
+      GetUsersStreamCommand.ResponseSchema,
     );
   }
 
@@ -386,6 +401,19 @@ export class UserController {
         data,
       },
       BulkAllExtendExpirationDateCommand.ResponseSchema,
+    );
+  }
+
+  public async bulkExtendExpiration(
+    data: BulkExtendExpirationDateCommand.Request,
+  ): Promise<BulkExtendExpirationDateCommand.Response['response']> {
+    return this.httpClient.callApi(
+      {
+        method: BulkExtendExpirationDateCommand.endpointDetails.REQUEST_METHOD,
+        url: BulkExtendExpirationDateCommand.url,
+        data,
+      },
+      BulkExtendExpirationDateCommand.ResponseSchema,
     );
   }
 }

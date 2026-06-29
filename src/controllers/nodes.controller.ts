@@ -1,11 +1,13 @@
 import {
   BulkNodesActionsCommand,
   BulkNodesProfileModificationCommand,
+  BulkNodesUpdateCommand,
   CreateNodeCommand,
   DeleteNodeCommand,
   DisableNodeCommand,
   EnableNodeCommand,
   GetAllNodesCommand,
+  GetAllNodesTagsCommand,
   GetLegacyStatsNodeUserUsageCommand,
   GetNodesMetricsCommand,
   GetOneNodeCommand,
@@ -108,23 +110,26 @@ export class NodesController {
 
   public async restart(
     uuid: string,
+    data: RestartNodeCommand.RequestBody,
   ): Promise<RestartNodeCommand.Response['response']> {
     return this.httpClient.callApi(
       {
         method: RestartNodeCommand.endpointDetails.REQUEST_METHOD,
         url: RestartNodeCommand.url(uuid),
+        data,
       },
       RestartNodeCommand.ResponseSchema,
     );
   }
 
-  public async restartAll(): Promise<
-    RestartAllNodesCommand.Response['response']
-  > {
+  public async restartAll(
+    data: RestartAllNodesCommand.RequestBody,
+  ): Promise<RestartAllNodesCommand.Response['response']> {
     return this.httpClient.callApi(
       {
         method: RestartAllNodesCommand.endpointDetails.REQUEST_METHOD,
         url: RestartAllNodesCommand.url,
+        data,
       },
       RestartAllNodesCommand.ResponseSchema,
     );
@@ -233,6 +238,31 @@ export class NodesController {
         data,
       },
       BulkNodesActionsCommand.ResponseSchema,
+    );
+  }
+
+  public async bulkUpdate(
+    data: BulkNodesUpdateCommand.Request,
+  ): Promise<BulkNodesUpdateCommand.Response['response']> {
+    return this.httpClient.callApi(
+      {
+        method: BulkNodesUpdateCommand.endpointDetails.REQUEST_METHOD,
+        url: BulkNodesUpdateCommand.url,
+        data,
+      },
+      BulkNodesUpdateCommand.ResponseSchema,
+    );
+  }
+
+  public async getAllTags(): Promise<
+    GetAllNodesTagsCommand.Response['response']
+  > {
+    return this.httpClient.callApi(
+      {
+        method: GetAllNodesTagsCommand.endpointDetails.REQUEST_METHOD,
+        url: GetAllNodesTagsCommand.url,
+      },
+      GetAllNodesTagsCommand.ResponseSchema,
     );
   }
 }

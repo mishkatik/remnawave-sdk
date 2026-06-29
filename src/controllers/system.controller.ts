@@ -1,5 +1,4 @@
 import {
-  EncryptHappCryptoLinkCommand,
   GenerateX25519Command,
   GetBandwidthStatsCommand,
   GetMetadataCommand,
@@ -95,19 +94,6 @@ export class SystemController {
         url: GenerateX25519Command.url,
       },
       GenerateX25519Command.ResponseSchema,
-    );
-  }
-
-  public async encryptHappCryptoLink(
-    data: EncryptHappCryptoLinkCommand.Request,
-  ): Promise<EncryptHappCryptoLinkCommand.Response['response']> {
-    return this.httpClient.callApi(
-      {
-        method: EncryptHappCryptoLinkCommand.endpointDetails.REQUEST_METHOD,
-        url: EncryptHappCryptoLinkCommand.url,
-        data,
-      },
-      EncryptHappCryptoLinkCommand.ResponseSchema,
     );
   }
 

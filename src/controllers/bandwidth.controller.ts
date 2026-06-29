@@ -2,6 +2,7 @@ import {
   GetLegacyStatsNodeUserUsageCommand,
   GetLegacyStatsUserUsageCommand,
   GetStatsNodesUsageCommand,
+  GetStatsNodesUsersUsageCommand,
   GetStatsNodeUsersUsageCommand,
   GetStatsUserUsageCommand,
 } from '@remnawave/backend-contract';
@@ -77,6 +78,21 @@ export class BandwidthController {
         params,
       },
       GetStatsNodesUsageCommand.ResponseSchema,
+    );
+  }
+
+  public async getNodesUsersUsage(
+    data: GetStatsNodesUsersUsageCommand.Request,
+    params: GetStatsNodesUsersUsageCommand.RequestQuery,
+  ): Promise<GetStatsNodesUsersUsageCommand.Response['response']> {
+    return this.httpClient.callApi(
+      {
+        method: GetStatsNodesUsersUsageCommand.endpointDetails.REQUEST_METHOD,
+        url: GetStatsNodesUsersUsageCommand.url,
+        data,
+        params,
+      },
+      GetStatsNodesUsersUsageCommand.ResponseSchema,
     );
   }
 }

@@ -78,12 +78,14 @@ export class SubscriptionsController {
 
   public async getSubPageConfigByShortUuid(
     shortUuid: string,
+    data: GetSubpageConfigByShortUuidCommand.RequestBody,
   ): Promise<GetSubpageConfigByShortUuidCommand.Response['response']> {
     return this.httpClient.callApi(
       {
         method:
           GetSubpageConfigByShortUuidCommand.endpointDetails.REQUEST_METHOD,
         url: GetSubpageConfigByShortUuidCommand.url(shortUuid),
+        data,
       },
       GetSubpageConfigByShortUuidCommand.ResponseSchema,
     );

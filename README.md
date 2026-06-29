@@ -203,6 +203,18 @@ await client.users.bulkAllUpdate({
   }
 });
 
+// Bulk Extend Expiration (by UUID list)
+await client.users.bulkExtendExpiration({
+  uuids: ["uuid1", "uuid2"],
+  extendDays: 30
+});
+
+// Stream Users (cursor-paginated)
+const stream = await client.users.getStream({
+  size: 250
+  // cursor: "<nextCursor from previous response>"
+});
+
 ```
 
 ---
@@ -240,10 +252,10 @@ await client.nodes.enable("node-uuid");
 await client.nodes.disable("node-uuid");
 
 // Restart Node
-await client.nodes.restart("node-uuid");
+await client.nodes.restart("node-uuid", { forceRestart: false });
 
 // Restart All Nodes
-await client.nodes.restartAll();
+await client.nodes.restartAll({ forceRestart: false });
 
 // Reorder Nodes
 await client.nodes.reorder({
@@ -266,6 +278,18 @@ const usage = await client.nodes.getUsageByRange({
 const nodeUsage = await client.nodes.getNodeUserUsageByRange("node-uuid", {
   startDate: "2024-01-01",
   endDate: "2024-01-31"
+});
+
+// Get All Node Tags
+const nodeTags = await client.nodes.getAllTags();
+
+// Bulk Update Nodes (set fields on many nodes)
+await client.nodes.bulkUpdate({
+  uuids: ["uuid1", "uuid2"],
+  fields: {
+    countryCode: "NL",
+    consumptionMultiplier: 1.5
+  }
 });
 
 ```
@@ -320,14 +344,8 @@ await client.hosts.disableMany({
   uuids: ["uuid1", "uuid2"]
 });
 
-// Set Inbound to Many Hosts
-await client.hosts.setInboundToMany({
-  uuids: ["uuid1", "uuid2"],
-  inboundUuid: "inbound-uuid"
-});
-
-// Set Port to Many Hosts
-await client.hosts.setPortToMany({
+// Bulk Update Many Hosts (partial fields)
+await client.hosts.updateMany({
   uuids: ["uuid1", "uuid2"],
   port: 443
 });
@@ -356,11 +374,6 @@ const health = await client.system.getRemnawaveHealth();
 
 // Generate X25519
 const keys = await client.system.generateX25519();
-
-// Encrypt Happ Crypto Link
-const encrypted = await client.system.encryptHappCryptoLink({
-  data: "data-to-encrypt"
-});
 
 ```
 
