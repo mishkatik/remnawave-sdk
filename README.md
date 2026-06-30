@@ -9,6 +9,17 @@
 
 ---
 
+## 🔄 Compatibility
+
+| SDK version | Remnawave panel |
+| ----------- | --------------- |
+| `1.5.x`     | `2.8.x`         |
+| `1.4.1`     | `2.7.4`         |
+
+> Pick an SDK release that matches your Remnawave panel version. Because the SDK tracks `@remnawave/backend-contract`, mixing different minor lines may surface type or runtime mismatches as the backend contract evolves.
+
+---
+
 ## 📦 Installation
 
 Choose your preferred package manager:
@@ -697,13 +708,34 @@ await client.infraBilling.deleteBillRecord({ uuid: "record-uuid" });
 
 ## 🔧 Error Handling
 
+The SDK throws two typed error classes, both exported from the package root. They extend the built-in `Error`, so existing `error instanceof Error` / `error.message` handling keeps working — while giving you structured access to the failure details.
+
+| Error                      | Thrown when                                                       | Extra properties                                                                                                                                                                |
+| -------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RemnawaveApiError`        | A request fails (non-2xx response) or the network call errors    | `status?: number` — HTTP status (undefined for network errors)<br>`errorCode?: string` — Remnawave application code (e.g. `"A025"`)<br>`data?: unknown` — raw response body<br>`cause` — the original error |
+| `RemnawaveValidationError` | A successful response does not match the expected schema         | `issues: ZodIssue[]` — the individual validation issues                                                                                                                        |
+
 ```typescript
+import {
+  RemnawaveApiError,
+  RemnawaveValidationError,
+} from "@mishkat/remnawave-sdk";
+
 try {
   const user = await client.users.getByUuid("user-uuid");
   console.log(user);
 } catch (error) {
-  if (error instanceof Error) {
-    console.error("API Error:", error.message);
+  if (error instanceof RemnawaveApiError) {
+    // Failed request (non-2xx) or network error
+    console.error("Status:", error.status);        // e.g. 401, 403, 404
+    console.error("Error code:", error.errorCode); // e.g. "A025"
+    console.error("Body:", error.data);            // raw response body from the API
+    console.error("Message:", error.message);
+  } else if (error instanceof RemnawaveValidationError) {
+    // The API responded, but the payload did not match the expected schema
+    console.error("Validation issues:", error.issues);
+  } else if (error instanceof Error) {
+    console.error("Unexpected error:", error.message);
   }
 }
 
